@@ -1,0 +1,66 @@
+
+<form [formGroup]="wholsalerform">
+    <table class="table table-striped">
+        <tr>
+            <th>Date</th>
+            <td><input type="date" style="width:164px;height: 40px;" placeholder="Enter Date" formControlName="date">
+            </td>
+            <th>Weight</th>
+            <td><input type="number" style="width:164px;height: 40px;" [(ngModel)]='myModel.Weight'
+                    (ngModelChange)="calculate()" formControlName="Weight"></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td><select style="width:164px;height: 40px;" formControlName="name">
+                    <option >Select Name</option>
+                    <option *ngFor="let name of WholsalerNameList">{{name.name}}</option>
+                </select></td>
+            <th>Rate</th>
+            <td><input type="number" style="width:164px;height: 40px;" [(ngModel)]='myModel.rate'
+                    (ngModelChange)="calculate()" formControlName="Rate">
+            </td>
+
+        </tr>
+        <tr>
+            <th>Product Name</th>
+            <td><input type="text" style="width:164px;height: 40px;" placeholder="Enter Product Name"
+                    formControlName="pname"></td>
+            <th>Total</th>
+            <td><input type="number" style="width:164px;height: 40px;" [(ngModel)]='myModel.Total'
+                    (ngModelChange)="calculate()" formControlName="total" readonly>
+            </td>
+        </tr>
+        <tr>
+            <th>Quantity</th>
+            <td><input type="number" style="width:164px;height: 40px;" placeholder="Enter Quantity"
+                    formControlName="Quantity"></td>
+            <th>Paid</th>
+            <td><input type="number" style="width:164px;height: 40px;" [(ngModel)]='myModel.paid'
+                    (ngModelChange)="calculate()" formControlName="Paid">
+            </td>
+        </tr>
+        <tr>
+            <th>Upload Bill</th>
+            <td><input type="File" style="width:164px;height: 40px;" placeholder="Enter Balance" formControlName="file">
+              
+<!--                     
+                        <img [src]="image ?image: 'assets/images/img_507349.png'" style="width: 50px; height: 50px;"
+                            class="img-circle user-img-circle" alt="User Image" />
+    -->
+            </td>
+            <th>Balance</th>
+            <td><input type="text" style="width:164px;height: 40px;" placeholder="Enter Balance"
+                    formControlName="Balance" [(ngModel)]='myModel.balance' readonly></td>
+
+        </tr>
+        <hr>
+        <tr>
+            <th></th>
+            <th></th>
+            <button type="button" style="width:164px;height: 40px;" class="btn btn-success"
+                (click)="submit()">submit</button>
+                <th></th>
+        </tr>
+    </table>
+
+</form>

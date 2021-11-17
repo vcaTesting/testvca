@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "parvej-d8cec": {
+      "hosting": {
+        "prjecct": [
+          "parvej-d8cec"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "aarshiya-5489d"
+  }
+}

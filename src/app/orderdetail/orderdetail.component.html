@@ -1,0 +1,210 @@
+
+<div id="htmlData">
+   <div class="row">
+      <div class="col-md-4 mt-3">
+         <mat-form-field appearance="outline" class="full-width-field">
+          <mat-label>Select Name</mat-label>
+          <mat-select [(ngModel)]="filterTerm" (selectionChange)="search()" >
+            <mat-option *ngFor="let name of CustomerName" [value]="name.name">
+              {{name.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+         </div>
+         <div class="col-md-4 mt-3">
+            <div class="form-group">
+              <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate"  placeholder="Search Wholesaler by Date">
+            </div>
+          </div>
+          <div class="col-md-4 mt-3">
+            <button class="btn btn-primary py-2" (click)="showallOrder()">Show All Customers Order</button>
+   
+          </div>
+   </div>
+   <table class="table table-striped" *ngIf="showDatatable">
+       <thead>
+           <tr>
+               <th>Date</th>
+               <th>Name</th>
+               <th>product Name</th>
+               <th>Quantity</th>
+               <th>Rate</th>
+               <th>Weight</th>
+               <th>Total</th>
+               <th>Paid</th>
+               <th>Balance</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+              <td>{{orderDetail.date }}</td>
+              <td>{{orderDetail.name }}</td>
+              <td>{{orderDetail.productname}}</td>
+              <td>{{orderDetail.Qantity}}</td>
+              <td>{{orderDetail.Rate}}</td>
+              <td>{{orderDetail.Weight}}</td>
+              <td>{{orderDetail.total}}</td>
+              <td>{{orderDetail.paid}}</td>
+              <td>{{orderDetail.Balance}}</td>
+           </tr>
+           <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name }}</td>
+               <td>{{orderDetail.productname1}}</td>
+               <td>{{orderDetail.Qantity1}}</td>
+               <td>{{orderDetail.Rate1}}</td>
+               <td>{{orderDetail.Weight1}}</td>
+               <td>{{orderDetail.total1}}</td>
+               <td>{{orderDetail.paid1}}</td>
+               <td>{{orderDetail.Balance1}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name }}</td>
+               <td>{{orderDetail.productname2}}</td>
+               <td>{{orderDetail.Qantity2}}</td>
+               <td>{{orderDetail.Rate2}}</td>
+               <td>{{orderDetail.Weight2}}</td>
+               <td>{{orderDetail.total2}}</td>
+               <td>{{orderDetail.paid2}}</td>
+               <td>{{orderDetail.Balance2}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname3}}</td>
+               <td>{{orderDetail.Qantity3}}</td>
+               <td>{{orderDetail.Rate3}}</td>
+               <td>{{orderDetail.Weight3}}</td>
+               <td>{{orderDetail.total3}}</td>
+               <td>{{orderDetail.paid3}}</td>
+               <td>{{orderDetail.Balance3}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname4}}</td>
+               <td>{{orderDetail.Qantity4}}</td>
+               <td>{{orderDetail.Rate4}}</td>
+               <td>{{orderDetail.Weight4}}</td>
+               <td>{{orderDetail.total4}}</td>
+               <td>{{orderDetail.paid4}}</td>
+               <td>{{orderDetail.Balance4}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname5}}</td>
+               <td>{{orderDetail.Qantity5}}</td>
+               <td>{{orderDetail.Rate5}}</td>
+               <td>{{orderDetail.Weight5}}</td>
+               <td>{{orderDetail.total5}}</td>
+               <td>{{orderDetail.paid5}}</td>
+               <td>{{orderDetail.Balance5}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname6}}</td>
+               <td>{{orderDetail.Qantity6}}</td>
+               <td>{{orderDetail.Rate6}}</td>
+               <td>{{orderDetail.Weight6}}</td>
+               <td>{{orderDetail.total6}}</td>
+               <td>{{orderDetail.paid6}}</td>
+               <td>{{orderDetail.Balance6}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname7}}</td>
+               <td>{{orderDetail.Qantity7}}</td>
+               <td>{{orderDetail.Rate7}}</td>
+               <td>{{orderDetail.Weight7}}</td>
+               <td>{{orderDetail.total7}}</td>
+               <td>{{orderDetail.paid7}}</td>
+               <td>{{orderDetail.Balance7}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname8}}</td>
+               <td>{{orderDetail.Qantity8}}</td>
+               <td>{{orderDetail.Rate8}}</td>
+               <td>{{orderDetail.Weight8}}</td>
+               <td>{{orderDetail.total8}}</td>
+               <td>{{orderDetail.paid8}}</td>
+               <td>{{orderDetail.Balance8}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname9}}</td>
+               <td>{{orderDetail.Qantity9}}</td>
+               <td>{{orderDetail.Rate9}}</td>
+               <td>{{orderDetail.Weight9}}</td>
+               <td>{{orderDetail.total9}}</td>
+               <td>{{orderDetail.paid9}}</td>
+               <td>{{orderDetail.Balance9}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname10}}</td>
+               <td>{{orderDetail.Qantity10}}</td>
+               <td>{{orderDetail.Rate10}}</td>
+               <td>{{orderDetail.Weight10}}</td>
+               <td>{{orderDetail.total10}}</td>
+               <td>{{orderDetail.paid10}}</td>
+               <td>{{orderDetail.Balance10}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname11}}</td>
+               <td>{{orderDetail.Qantity11}}</td>
+               <td>{{orderDetail.Rate11}}</td>
+               <td>{{orderDetail.Weight11}}</td>
+               <td>{{orderDetail.total11}}</td>
+               <td>{{orderDetail.paid11}}</td>
+               <td>{{orderDetail.Balance11}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname12}}</td>
+               <td>{{orderDetail.Qantity12}}</td>
+               <td>{{orderDetail.Rate12}}</td>
+               <td>{{orderDetail.Weight12}}</td>
+               <td>{{orderDetail.total12}}</td>
+               <td>{{orderDetail.paid12}}</td>
+               <td>{{orderDetail.Balance12}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname13}}</td>
+               <td>{{orderDetail.Qantity13}}</td>
+               <td>{{orderDetail.Rate13}}</td>
+               <td>{{orderDetail.Weight13}}</td>
+               <td>{{orderDetail.total13}}</td>
+               <td>{{orderDetail.paid13}}</td>
+               <td>{{orderDetail.Balance13}}</td>
+            </tr>
+            <tr *ngFor="let orderDetail of customerOrderList | filter:filterTerm | filter:searchByDate ">
+               <td>{{orderDetail.date}}</td>
+               <td>{{orderDetail.name}}</td>
+               <td>{{orderDetail.productname14}}</td>
+               <td>{{orderDetail.Qantity14}}</td>
+               <td>{{orderDetail.Rate14}}</td>
+               <td>{{orderDetail.Weight14}}</td>
+               <td>{{orderDetail.total14}}</td>
+               <td>{{orderDetail.paid14}}</td>
+               <td>{{orderDetail.Balance14}}</td>
+            </tr>
+       </tbody>
+   </table>
+</div>
+<div *ngIf="showDatatable" class="d-flex justify-content-center">
+   <button class="btn btn-primary" (click)="downloadPdf()">Download PDF</button>
+
+</div>

@@ -1,0 +1,90 @@
+<div class="col-md-4 mt-3">
+    <div class="form-group">
+      <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate" (ngModelChange)="search()" placeholder="Search product Balance by Date">
+    </div>
+  </div>
+
+<table class="table table-striped" *ngIf="showDatatable">
+
+    <tr>
+        <th>Date</th>
+        <th>Product Name</th>
+        <th>Total</th>
+        <th>saleout</th>
+        <th>Balennce</th>
+    </tr>
+    <tr *ngFor="let item of data | filter:searchByDate  let i =index">
+        <td>{{item.date}}</td>
+        <td>{{item.p1}}</td>
+        <td>{{item.t1}}</td>
+        <td>{{item.s1}}</td>
+        <td>{{item.b1}}</td>
+
+    </tr>
+    <tr *ngFor="let item of data | filter:searchByDate let i =index">
+        <td>{{item.date}}</td>
+        <td>{{item.p2}}</td>
+        <td>{{item.t2}}</td>
+        <td>{{item.s2}}</td>
+        <td>{{item.b2}}</td>
+
+    </tr>
+    <tr *ngFor="let item of data | filter:searchByDate let i =index">
+        <td>{{item.date}}</td>
+        <td>{{item.p3}}</td>
+        <td>{{item.t3}}</td>
+        <td>{{item.s3}}</td>
+        <td>{{item.b3}}</td>
+
+    </tr>
+    <tr *ngFor="let item of data | filter:searchByDate let i =index">
+        <td>{{item.date}}</td>
+        <td>{{item.p4}}</td>
+        <td>{{item.t4}}</td>
+        <td>{{item.s4}}</td>
+        <td>{{item.b4}}</td>
+
+    </tr>
+    <tr *ngFor="let item of data | filter:searchByDate let i =index">
+        <td>{{item.date}}</td>
+        <td>{{item.p5}}</td>
+        <td>{{item.t5}}</td>
+        <td>{{item.s5}}</td>
+        <td>{{item.b5}}</td>
+
+    </tr>
+    <tr *ngFor="let item of data | filter:searchByDate let i =index">
+        <td>{{item.date}}</td>
+        <td>{{item.p6}}</td>
+        <td>{{item.t6}}</td>
+        <td>{{item.s6}}</td>
+        <td>{{item.b6}}</td>
+
+    </tr>
+    <tr *ngFor="let item of data | filter:searchByDate let i =index">
+        <td>{{item.date}}</td>
+        <td>{{item.p7}}</td>
+        <td>{{item.t7}}</td>
+        <td>{{item.s7}}</td>
+        <td>{{item.b7}}</td>
+
+    </tr>
+    <tr *ngFor="let item of data | filter:searchByDate let i =index">
+        <td>{{item.date}}</td>
+        <td>{{item.p8}}</td>
+        <td>{{item.t8}}</td>
+        <td>{{item.s8}}</td>
+        <td>{{item.b8}}</td>
+
+    </tr>
+    <tr *ngFor="let item of data | filter:searchByDate let i =index">
+        <td>{{item.date}}</td>
+        <td>{{item.p9}}</td>
+        <td>{{item.t9}}</td>
+        <td>{{item.s9}}</td>
+        <td>{{item.b9}}</td>
+
+    </tr>
+</table>
+
+<button (click)="back()" *ngIf="showDatatable">=Back</button>

@@ -1,0 +1,279 @@
+<div id="htmlData">
+
+<div class="row">
+  <div class="col-12">
+
+    <div style="overflow-x:auto;">
+  <form [formGroup]="orderForm">
+    <div class="row">
+      <div class="col-4">
+        <input type="date" formControlName="date" style="height: 35px;">
+      </div>
+      <div class="col-3">
+        <select formControlName="name" style="height: 35px; width: 150px;">
+          <option selected>Select Name</option>
+          <option *ngFor="let name of CustomerList">{{name.name}}</option>
+        </select>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th>Prodduct Name</th>
+          <th>Qantity</th>
+          <th>Rate</th>
+          <th>Weight</th>
+          <th>Total</th>
+          <th>Paid</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tr>
+        <td><input type="text" formControlName="productname" value="Wing" readonly></td>
+        <td><input type="text" formControlName="Qantity"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate' (ngModelChange)="calculate()" formControlName="Rate"></td>
+        <td><input type="text" [(ngModel)]='myModel.Weight' (ngModelChange)="calculate()" formControlName="Weight">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Total' (ngModelChange)="cal()" formControlName="total" readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid' (ngModelChange)="cal()" formControlName="paid"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance' formControlName="Balance" readonly></td>
+
+      </tr>
+
+      <tr>
+        <td><input type="text" formControlName="productname1" readonly></td>
+        <td><input type="text" formControlName="Qantity1"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate1' (ngModelChange)="calculate()" formControlName="Rate1">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight1' (ngModelChange)="calculate()"
+            formControlName="Weight1"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total1' (ngModelChange)="cal()" formControlName="total1"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid1' (ngModelChange)="cal()" formControlName="paid1"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance1' formControlName="Balance1" readonly></td>
+
+      </tr>
+
+
+
+      <tr>
+        <td><input type="text" formControlName="productname2" readonly></td>
+        <td><input type="text" formControlName="Qantity2"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate2' (ngModelChange)="calculate()" formControlName="Rate2">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight2' (ngModelChange)="calculate()"
+            formControlName="Weight2"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total2' (ngModelChange)="cal()" formControlName="total2"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid2' (ngModelChange)="cal()" formControlName="paid2"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance2' formControlName="Balance2" readonly></td>
+
+      </tr>
+
+      <tr>
+        <td><input type="text" formControlName="productname3" readonly></td>
+        <td><input type="text" formControlName="Qantity3"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate3' (ngModelChange)="calculate()" formControlName="Rate3">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight3' (ngModelChange)="calculate()"
+            formControlName="Weight2"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total3' (ngModelChange)="cal()" formControlName="total3"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid3' (ngModelChange)="cal()" formControlName="paid3"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance3' formControlName="Balance3" readonly></td>
+
+      </tr>
+
+      <tr>
+        <td><input type="text" formControlName="productname4" readonly></td>
+        <td><input type="text" formControlName="Qantity4"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate4' (ngModelChange)="calculate()" formControlName="Rate4">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight4' (ngModelChange)="calculate()"
+            formControlName="Weight4"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total4' (ngModelChange)="cal()" formControlName="total4"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid4' (ngModelChange)="cal()" formControlName="paid4"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance4' formControlName="Balance4" readonly></td>
+
+      </tr>
+      <tr>
+        <td><input type="text" formControlName="productname5" readonly></td>
+        <td><input type="text" formControlName="Qantity5" [(ngModel)]='myModel.qt'></td>
+        <td><input type="text" [(ngModel)]='myModel.rate5' (ngModelChange)="calculate()" formControlName="Rate5">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight5' (ngModelChange)="calculate()"
+            formControlName="Weight5"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total5' (ngModelChange)="cal()" formControlName="total5"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid5' (ngModelChange)="cal()" formControlName="paid5"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance5' formControlName="Balance5" readonly></td>
+
+      </tr>
+
+      <tr>
+        <td><input type="text" formControlName="productname6" readonly></td>
+        <td><input type="text" formControlName="Qantity6"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate6' (ngModelChange)="calculate()" formControlName="Rate6">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight6' (ngModelChange)="calculate()"
+            formControlName="Weight6"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total6' (ngModelChange)="cal()" formControlName="total6"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid6' (ngModelChange)="cal()" formControlName="paid6"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance6' formControlName="Balance6" readonly></td>
+
+      </tr>
+
+
+      <tr>
+        <td><input type="text" formControlName="productname7" readonly></td>
+        <td><input type="text" formControlName="Qantity7"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate7' (ngModelChange)="calculate()" formControlName="Rate7">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight7' (ngModelChange)="calculate()"
+            formControlName="Weight7"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total7' (ngModelChange)="cal()" formControlName="total7"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid7' (ngModelChange)="cal()" formControlName="paid7"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance7' formControlName="Balance7" readonly></td>
+
+      </tr>
+
+      <tr>
+        <td><input type="text" formControlName="productname8" readonly></td>
+        <td><input type="text" formControlName="Qantity8"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate8' (ngModelChange)="calculate()" formControlName="Rate8">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight8' (ngModelChange)="calculate()"
+            formControlName="Weight8"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total8' (ngModelChange)="cal()" formControlName="total8"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid8' (ngModelChange)="cal()" formControlName="paid8"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance8' formControlName="Balance8" readonly></td>
+
+      </tr>
+
+      <tr>
+        <td><input type="text" formControlName="productname9" readonly></td>
+        <td><input type="text" formControlName="Qantity9"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate9' (ngModelChange)="calculate()" formControlName="Rate9">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight9' (ngModelChange)="calculate()"
+            formControlName="Weight9"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total9' (ngModelChange)="cal()" formControlName="total9"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid9' (ngModelChange)="cal()" formControlName="paid9"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance9' formControlName="Balance9" readonly></td>
+
+      </tr>
+
+      <tr>
+        <td><input type="text" formControlName="productname10" readonly></td>
+        <td><input type="text" formControlName="Qantity10"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate10' (ngModelChange)="calculate()" formControlName="Rate10">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight10' (ngModelChange)="calculate()"
+            formControlName="Weight10"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total10' (ngModelChange)="cal()" formControlName="total10"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid10' (ngModelChange)="cal()" formControlName="paid10"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance10' formControlName="Balance10" readonly></td>
+
+      </tr>
+
+
+
+      <tr>
+        <td><input type="text" formControlName="productname11" readonly></td>
+        <td><input type="text" formControlName="Qantity11"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate11' (ngModelChange)="calculate()" formControlName="Rate11">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight11' (ngModelChange)="calculate()"
+            formControlName="Weight11"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total11' (ngModelChange)="cal()" formControlName="total11"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid11' (ngModelChange)="cal()" formControlName="paid11"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance11' formControlName="Balance11" readonly></td>
+
+      </tr>
+
+      <tr>
+        <td><input type="text" formControlName="productname12" readonly></td>
+        <td><input type="text" formControlName="Qantity12"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate12' (ngModelChange)="calculate()" formControlName="Rate12">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight12' (ngModelChange)="calculate()"
+            formControlName="Weight12"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total12' (ngModelChange)="cal()" formControlName="total12"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid12' (ngModelChange)="cal()" formControlName="paid12"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance12' formControlName="Balance12" readonly></td>
+
+      </tr>
+
+
+      <tr>
+        <td><input type="text" formControlName="productname13" readonly></td>
+        <td><input type="text" formControlName="Qantity13"></td>
+        <td><input type="text" [(ngModel)]='myModel.rate13' (ngModelChange)="calculate()" formControlName="Rate13">
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight13' (ngModelChange)="calculate()"
+            formControlName="Weight13"></td>
+        <td><input type="text" [(ngModel)]='myModel.Total13' (ngModelChange)="cal()" formControlName="total13"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid13' (ngModelChange)="cal()" formControlName="paid13"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance13' formControlName="Balance13" readonly></td>
+
+      </tr>
+
+
+      <tr>
+        <td><input type="text" formControlName="productname14" readonly></td>
+        <td><input type="text" formControlName="Qantity14" readonly></td>
+        <td><input type="text" [(ngModel)]='myModel.rate14' (ngModelChange)="calculate()" formControlName="Rate14"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Weight14' (ngModelChange)="calculate()"
+            formControlName="Weight14" readonly></td>
+        <td><input type="text" [(ngModel)]='myModel.Total14' (ngModelChange)="cal()" formControlName="total14"
+            readonly>
+        </td>
+        <td><input type="text" [(ngModel)]='myModel.Paid14' (ngModelChange)="cal()" formControlName="paid14"></td>
+        <td><input type="text" [(ngModel)]='myModel.Balance14' formControlName="Balance14" readonly></td>
+
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td></td>
+        <td></td>
+        <td><button type="button" class="bn btn-primary" style="height: 35px;width: 100px;"
+            (click)="submit()">Submit</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
+<div class="col-md-4 text-right">
+  <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+</div>
+
+    </div>
+
+
+  </div>
+</div>

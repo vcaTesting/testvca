@@ -1,0 +1,87 @@
+
+     <div class="row">
+      <div class="col-4">
+          <button type="button" class="btn btn-success" (click)="gotoCustomerPayment()">
+              <b>+</b> Payment Details
+             </button> 
+      </div>
+      <div class="col-4">
+          <button type="button" class="btn btn-success" (click)="gotoCustomerOrder()" >
+              <b>+</b> Order Details
+             </button> 
+      </div>
+      <div class="col-4">
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+              <b>+</b> Add Customer
+             </button> 
+      </div>
+  </div>
+  <div class="col-md-6 mt-3">
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search Wholesaler by Name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4-sm-12" *ngFor="let customer of data  | filter:search">
+      <div class="container d-flex justify-content-center align-items-center">
+        <div class="card mt-3">
+          <div class="upper"> <img src="https://i.imgur.com/Qtrsrk5.jpg" class="img-fluid"> </div>
+          <div class="user text-center">
+            <div class="profile"> <img src="../../assets/profile2.jpg" class="rounded-circle" width="80"> </div>
+          </div>
+          <div class="mt-5 text-center">
+            <h4 class="mb-0">{{customer.name}}</h4>
+            <span class="text-muted d-block mb-2">{{customer.phone}}</span>
+            <span class="text-muted d-block mb-2">{{customer.address}}</span> <button
+              class="btn btn-primary btn-sm follow">Edit</button>
+            <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+              <div class="stats">
+                <h5 class="mb-0">Balance</h5> <span>8,797</span>
+              </div>
+              <div class="stats">
+                <h5 class="mb-0">Rating</h5> <span>142</span>
+              </div>
+              <div class="stats">
+                <h5 class="mb-0">Paid</h5> <span>129</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><h3 style="color: blue;">Add Customer</h3></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addcustomer">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group  container d-flex justify-content-center align-items-center">
+              <input type="text"  formControlName="name" placeholder="Your Name *">
+              </div>
+              
+              <div class="form-group  container d-flex justify-content-center align-items-center">
+                <input type="text" formControlName="address" placeholder="Your Address *">
+              </div>
+              <div class="form-group  container d-flex justify-content-center align-items-center">
+               <input type="number" formControlName="phone" placeholder="Your Phone Number *">
+              </div>
+              
+        </div>
+        <div class="modal-footer container d-flex justify-content-center align-items-center ">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="submit()">Save changes</button>
+        </div>
+      </div>
+        </form>
+   
+  </div>
+</div>

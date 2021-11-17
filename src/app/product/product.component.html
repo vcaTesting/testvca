@@ -1,0 +1,195 @@
+<!-- <div class="row">
+    <div class="col-4">
+        <div class="olor">
+            <h3>Aarshiya</h3>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="contact-image">
+            <img src="../../assets/logo1.png" alt="rocket_contact" height="100px" />
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="olor">
+            <h3>Chicken</h3>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="table-wrapper">
+    <form [formGroup]="productform">
+        <input type="date" formControlName="date" style="height: 35px;"><br><br>
+        <table class="fl-table">
+            <thead>
+                <tr>
+
+                    <th>product Name</th>
+                    <th>Fix price</th>
+                    <th>Manual price</th>
+                    <th>Paper Rate</th>
+                    <th>Paper Rate+</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" placeholder="product nm" value="wing" formControlName="wing" readonly></td>
+                    <td><input type="number" placeholder="fix rate" formControlName="wfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="wmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="wpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="wprp"></td>
+
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="product nm" value="Bonelees" formControlName="bonelees"
+                            readonly></td>
+                    <td><input type="number" placeholder="fix rate" formControlName="bfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="bmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="bpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="bprp"></td>
+
+                </tr>
+                <tr>
+
+                    <td><input type="text" placeholder="product nm" value="legBonelees" formControlName="legbonelees"
+                            readonly></td>
+                    <td><input type="number" placeholder="fix rate" formControlName="lfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="lmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="lpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="lprp"></td>
+
+
+                </tr>
+
+                <tr>
+
+                    <td><input type="text" placeholder="product nm" value="Boiler" formControlName="boiler" readonly>
+                    </td>
+                    <td><input type="number" placeholder="fix rate" formControlName="boilerfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="boilermr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="boilerpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="boilerprp"></td>
+
+
+                </tr>
+                <tr>
+
+
+                    <td><input type="text" placeholder="product nm" value="coldress" formControlName="coldress"
+                            readonly></td>
+                    <td><input type="number" placeholder="fix rate" formControlName="cfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="cmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="cpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="cprp"></td>
+
+
+                </tr>
+                <tr>
+
+
+                    <td><input type="text" placeholder="product nm" value="Tanduri" formControlName="tanduri" readonly>
+                    </td>
+                    <td><input type="number" placeholder="fix rate" formControlName="tfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="tmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="tpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="tprp"></td>
+
+
+                </tr>
+                <tr>
+
+
+                    <td><input type="text" placeholder="product nm" value="Curry Cut" formControlName="currycut"
+                            readonly></td>
+                    <td><input type="number" placeholder="fix rate" formControlName="curryfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="currymr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="currypr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="curryprp"></td>
+
+
+                </tr>
+                <tr>
+
+                    <td><input type="text" placeholder="product nm" value="Cut peace" formControlName="cutpeace"
+                            readonly></td>
+                    <td><input type="number" placeholder="fix rate" formControlName="cutfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="cutmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="cutpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="cutprp"></td>
+
+
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="product nm" value="Leaver" formControlName="leaver" readonly>
+                    </td>
+                    <td><input type="number" placeholder="fix rate" formControlName="leaverFixRate"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="leavermr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="leaverpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="leaverprp"></td>
+
+
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="product nm" value="skin" formControlName="skin" readonly></td>
+                    <td><input type="number" placeholder="fix rate" formControlName="skinfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="skinmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="skinpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="skinprp"></td>
+
+
+                </tr>
+
+                <tr>
+                    <td><input type="text" placeholder="product nm" value="speacial leg" formControlName="spclleg"
+                            readonly></td>
+                    <td><input type="number" placeholder="fix rate" formControlName="splfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="splmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="splpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="splprp"></td>
+
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="product nm" value="Live bird" formControlName="livebird"
+                            readonly></td>
+                    <td><input type="number" placeholder="fix rate" formControlName="lbfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="lbmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="lbpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="lbprp"></td>
+
+
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="product nm" value="Egg" formControlName="egg" readonly></td>
+                    <td><input type="number" placeholder="fix rate" formControlName="eggfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="eggmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="eggpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="eggprp"></td>
+
+
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="product nm" value="Gavran" formControlName="gavran" readonly>
+                    </td>
+                    <td><input type="number" placeholder="fix rate" formControlName="gfr"></td>
+                    <td><input type="number" placeholder="manual rate" formControlName="gmr"></td>
+                    <td><input type="number" placeholder="paper rate" formControlName="gpr"></td>
+                    <td><input type="number" placeholder="paper rate+" formControlName="gprp"></td>
+
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+
+                    <td>
+
+                        <button type="button" class="btn btn-primary" (click)="submit()"
+                            [disabled]="productform.invalid"> submit</button>
+
+                    </td>
+                </tr>
+            <tbody>
+
+        </table>
+    </form>
+</div>

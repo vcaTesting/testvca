@@ -1,0 +1,161 @@
+<!-- <div class="row">
+    <div class="col-4">
+        <div class="olor">
+            <h3>Aarshiya</h3>
+           </div>
+       </div>
+         <div class="col-4">
+             <div class="contact-image">
+                <img src="../../assets/logo1.png" alt="rocket_contact" height="100px" />
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="olor">
+                <h3>Chicken</h3>
+               </div>
+        </div>
+            </div> -->
+
+
+<form [formGroup]="balanceforms">
+    <input type="date" formControlName="date" style="height: 35px;">
+
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Name</th>
+                <th>Total</th>
+                <th>Saleout</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+
+
+
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p1" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t1" [(ngModel)]='myModel.Total'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s1" [(ngModel)]='myModel.saleout'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b1" [(ngModel)]='myModel.Balance'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p2" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t2" [(ngModel)]='myModel.Total1'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s2" [(ngModel)]='myModel.saleout1'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b2" [(ngModel)]='myModel.Balance1'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p3" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t3" [(ngModel)]='myModel.Total2'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s3" [(ngModel)]='myModel.saleout2'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b3" [(ngModel)]='myModel.Balance2'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p4" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t4" [(ngModel)]='myModel.Total3'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s4" [(ngModel)]='myModel.saleout3'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b4" [(ngModel)]='myModel.Balance3'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p5" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t5" [(ngModel)]='myModel.Total4'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s5" [(ngModel)]='myModel.saleout4'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b5" [(ngModel)]='myModel.Balance4'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p6" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t6" [(ngModel)]='myModel.Total5'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s6" [(ngModel)]='myModel.saleout5'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b6" [(ngModel)]='myModel.Balance5'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p7" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t7" [(ngModel)]='myModel.Total6'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s7" [(ngModel)]='myModel.saleout6'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b7" [(ngModel)]='myModel.Balance6'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p8" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t8" [(ngModel)]='myModel.Total7'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s8" [(ngModel)]='myModel.saleout7'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b8" [(ngModel)]='myModel.Balance7'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p9" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t9" [(ngModel)]='myModel.Total8'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s9" [(ngModel)]='myModel.saleout8'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b9" [(ngModel)]='myModel.Balance8'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p10" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t10" [(ngModel)]='myModel.Total9'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s10" [(ngModel)]='myModel.saleout9'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b10" [(ngModel)]='myModel.Balance9'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p11" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t11" [(ngModel)]='myModel.Total10'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s11" [(ngModel)]='myModel.saleout10'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b11" [(ngModel)]='myModel.Balance10'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p12" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t12" [(ngModel)]='myModel.Total11'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s12" [(ngModel)]='myModel.saleout11'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b12" [(ngModel)]='myModel.Balance11'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Enter Name" formControlName="p13" readonly></td>
+            <td><input type="number" placeholder="Enter Total" formControlName="t13" [(ngModel)]='myModel.Total12'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Saleout" formControlName="s13" [(ngModel)]='myModel.saleout12'
+                    (ngModelChange)="cal()"></td>
+            <td><input type="number" placeholder="Enter Balance" formControlName="b13" [(ngModel)]='myModel.Balance12'
+                    readonly></td>
+        </tr>
+        <tr>
+            <td>
+            <td></td>
+            <td><button class="btn btn-primary" (click)="submit()">Submt</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<button class="btn btn-primary" (click)="goto()">See Balance Details</button>

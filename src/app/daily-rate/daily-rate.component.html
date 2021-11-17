@@ -1,0 +1,145 @@
+
+    <div class="col-md-4 mt-3">
+        <div class="form-group">
+          <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate" (ngModelChange)="search()" placeholder="Search Wholesaler by Date">
+        </div>
+      </div>
+<div class="card">
+    <table class="table table-striped" *ngIf="showDatatable">
+        <tr>
+            <th>date</th>
+            <th>product Name</th>
+            <th>Fixed Rate</th>
+            <th>Manual Rate</th>
+            <th>paper rate</th>
+            <th>Paper Rate +</th>
+        </tr>
+        
+        <tr *ngFor="let i of data | filter:searchByDate">
+       <td>{{i.date | date: 'mediumDate'}}</td>
+       <td>{{i.wing}}</td>
+       <td>{{i.wfr}}</td>
+       <td>{{i.wmr}}</td>
+       <td>{{i.wpr}}</td>
+       <td>{{i.wprp}}</td>
+       </tr>
+       <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.bonelees}}</td>
+        <td>{{i.bfr}}</td>
+        <td>{{i.bmr}}</td>
+        <td>{{i.bpr}}</td>
+        <td>{{i.bprp}}</td>
+    </tr>
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.legbonelees}}</td>
+        <td>{{i.lfr}}</td>
+        <td>{{i.lmr}}</td>
+        <td>{{i.lpr}}</td>
+        <td>{{i.lprp}}</td>
+    </tr>
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.boiler}}</td>
+        <td>{{i.boilerfr}}</td>
+        <td>{{i.boilermr}}</td>
+        <td>{{i.boilerpr}}</td>
+        <td>{{i.boilerprp}}</td>
+    </tr>
+    
+    <tr *ngFor="let i of data | filter:searchByDate" >
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.coldress}}</td>
+        <td>{{i.cfr}}</td>
+        <td>{{i.cmr}}</td>
+        <td>{{i.cpr}}</td>
+        <td>{{i.cprp}}</td>
+    </tr>
+    
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.tanduri}}</td>
+        <td>{{i.tfr}}</td>
+        <td>{{i.tmr}}</td>
+        <td>{{i.tpr}}</td>
+        <td>{{i.tprp}}</td>
+    </tr>
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.currycut}}</td>
+        <td>{{i.curryfr}}</td>
+        <td>{{i.currymr}}</td>
+        <td>{{i.currypr}}</td>
+        <td>{{i.curryprp}}</td>
+    </tr>
+    
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.cutpeace}}</td>
+        <td>{{i.cutfr}}</td>
+        <td>{{i.cutmr}}</td>
+        <td>{{i.cutpr}}</td>
+        <td>{{i.cutprp}}</td>
+    </tr>
+    
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.leaver}}</td>
+        <td>{{i.leaverFixRate}}</td>
+        <td>{{i.leavermr}}</td>
+        <td>{{i.leaverpr}}</td>
+        <td>{{i.leaverprp}}</td>
+    </tr>
+    
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.skin}}</td>
+        <td>{{i.skinfr}}</td>
+        <td>{{i.skinmr}}</td>
+        <td>{{i.skinpr}}</td>
+        <td>{{i.skinprp}}</td>
+    </tr>
+    
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.spclleg}}</td>
+        <td>{{i.splfr}}</td>
+        <td>{{i.splmr}}</td>
+        <td>{{i.splpr}}</td>
+        <td>{{i.splprp}}</td>
+    </tr>
+    
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.livebird}}</td>
+        <td>{{i.lbfr}}</td>
+        <td>{{i.lbmr}}</td>
+        <td>{{i.lbpr}}</td>
+        <td>{{i.lbprp}}</td>
+    </tr>
+    
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.egg}}</td>
+        <td>{{i.eggfr}}</td>
+        <td>{{i.eggmr}}</td>
+        <td>{{i.eggpr}}</td>
+        <td>{{i.eggprp}}</td>
+    </tr>
+    
+    
+    <tr *ngFor="let i of data | filter:searchByDate">
+        <td>{{i.date | date: 'mediumDate'}}</td>
+        <td>{{i.gavran}}</td>
+        <td>{{i.gfr}}</td>
+        <td>{{i.gmr}}</td>
+        <td>{{i.gpr}}</td>
+        <td>{{i.gprp}}</td>
+    </tr>
+    </table>
+</div>
+
+
+
+
