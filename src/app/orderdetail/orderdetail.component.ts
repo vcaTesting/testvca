@@ -48,20 +48,18 @@ export class OrderdetailComponent implements OnInit {
   }
   downloadPdf(){
     this.DATA = document.getElementById('htmlData');
-       
+      
     html2canvas(this.DATA).then(canvas => {
         
-        let fileWidth = 208;
+        let fileWidth = 220;
         let fileHeight = canvas.height * fileWidth / canvas.width;
         
         const FILEURI = canvas.toDataURL('image/png')
         let PDF = new jsPDF('p', 'mm', 'a4');
-        PDF.text("Hello world!", 100, 10);
-
         let position = 0;
-        PDF.addImage(FILEURI, 'PNG', 0, position, 100, fileHeight)
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
         
         PDF.save('angular-demo.pdf');
-       });     
-  }
+      });     
+    }
 }

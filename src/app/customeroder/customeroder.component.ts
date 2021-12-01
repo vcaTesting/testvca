@@ -112,7 +112,7 @@ export class CustomeroderComponent implements OnInit {
     name: '',
   };
   DATA:any
-
+ 
   constructor(private http:FirebaseService)
      { }
 
@@ -304,7 +304,7 @@ public openPDF():void {
       
   html2canvas(this.DATA).then(canvas => {
       
-      let fileWidth = 208;
+      let fileWidth = 220;
       let fileHeight = canvas.height * fileWidth / canvas.width;
       
       const FILEURI = canvas.toDataURL('image/png')

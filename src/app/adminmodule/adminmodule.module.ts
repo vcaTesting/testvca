@@ -21,7 +21,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     Ng2SearchPipeModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    
   ]
 })
 export class AdminmoduleModule { }

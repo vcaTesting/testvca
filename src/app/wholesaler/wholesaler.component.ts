@@ -22,6 +22,11 @@ export class WholesalerComponent implements OnInit {
     paid:0,
     balance:0
   }
+  totalBalanceList:any=[];
+  tempArray:any=[];
+  totalAmount:any;
+  totalPaid:any;
+  totalBalance:any
   constructor(private save:FirebaseService,
     private router:Router
      ) { 
@@ -33,7 +38,7 @@ export class WholesalerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+   this.getWholsalerBalance()
     this.WholsalerName()
   }
 
@@ -52,15 +57,7 @@ addWholesaler(){
 
 }
 
-WholsalerName(){
-  // this.save.showWholsaler().subscribe(
-  //   (Response)=>{
-  //     const name= JSON.stringify(Response)
-  //       this.WholsalerNameList = JSON.parse(name)
-  //     },
-      
-  //     (err)=>console.log(err)
-  //   ) 
+WholsalerName(){ 
   this.save.getwholsaler().subscribe(
     (res)=>{
       this.WholsalerNameList = res;
@@ -74,5 +71,33 @@ WholsalerName(){
     this.router.navigate(['/paymentpageWholsaler'])
 
   }
+  getWholsalerBalance() {
+    this.save.getOrderofWholsaler().subscribe(
+      (res) => {
+        this.totalBalanceList = res
+        this.tempArray = res
+      })
+  }
+  total(){
+    let total = 0;
+    let paid = 0;
+    let balance = 0;
+    for (let item of this.totalBalanceList) {
+      total += item['total']
+      paid += item['Paid']
+      balance += item['Balance']
+      this.totalAmount = total
+      this.totalPaid = paid
+      this.totalBalance = balance
+    }
+  }
+updateWholsalerBalance(name:any){
+  this.totalBalanceList = this.tempArray.filter((item:any)=>{
+    if(item.name == name){
+     return item
+    }
+  })
+  this.total()
+}
 }
 

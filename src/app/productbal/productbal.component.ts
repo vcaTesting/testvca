@@ -129,9 +129,7 @@ this.balanceforms= new FormGroup({
 
  }
   } 
-  goto(){
-    this.router.navigate(['/goto'])
-  }
+ 
 
   cal(){
     this.myModel.Balance=this.myModel.Total-this.myModel.saleout

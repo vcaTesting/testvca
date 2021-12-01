@@ -1,5 +1,5 @@
 
-<div id="htmlData">
+<div >
    <div class="row">
       <div class="col-md-4 mt-3">
          <mat-form-field appearance="outline" class="full-width-field">
@@ -13,7 +13,7 @@
          </div>
          <div class="col-md-4 mt-3">
             <div class="form-group">
-              <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate"  placeholder="Search Wholesaler by Date">
+              <input  type="date" class="form-control js-daterangepicker" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate"  placeholder="Search Wholesaler by Date">
             </div>
           </div>
           <div class="col-md-4 mt-3">
@@ -21,8 +21,8 @@
    
           </div>
    </div>
-   <table class="table table-striped" *ngIf="showDatatable">
-       <thead>
+   <table class="table table-striped" *ngIf="showDatatable" id="htmlData">
+       <thead >
            <tr>
                <th>Date</th>
                <th>Name</th>

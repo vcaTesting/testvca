@@ -10,6 +10,11 @@ import { FirebaseService } from '../firebase.service';
 export class WholsalerorderComponent implements OnInit {
   wholsalerform: any;
   data: any = [];
+  productNameList:any= [
+    {name:'Select Product'},{name:'Wing'},{name:'Leg Boneless'},{name:'Boiler'},{name:'Coldress'},{name:'Tanduri'},
+    {name:'Cury Cut'},{name:'Cut peace'},{name:'Leaver'},{name:'Skin'},{name:'Spcl Leg'},{name:'Live bird'},{name:'Egg'},{name:'Gavran'}
+
+  ];
   WholsalerNameList: any = [];
   myModel = {
     Weight: 0,
@@ -58,14 +63,6 @@ export class WholsalerorderComponent implements OnInit {
     this.myModel.balance = this.myModel.Total * 1 - this.myModel.paid * 1
   }
   WholsalerName() {
-    // this.http.showWholsaler().subscribe(
-    //   (Response)=>{
-    //     const name= JSON.stringify(Response)
-    //       this.WholsalerNameList = JSON.parse(name)
-    //     },
-
-    //     (err)=>console.log(err)
-    //   ) 
     this.http.getwholsaler().subscribe(
       (res)=>{
         this.WholsalerNameList = res

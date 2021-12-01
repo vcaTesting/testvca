@@ -14,33 +14,43 @@ export class AddcustomerComponent implements OnInit {
   customers: any = [];
   search:any;
   data: any = [];
-  constructor(private _add: FirebaseService,
+  editForm:any;
+  totalBalanceList:any = [];
+  tempArray:any = [];
+  balance:any;
+  paid:any;
+  total:any
+  constructor(private httpSearce: FirebaseService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.showcustomers();
+    this.getCustomeTotalBalance()
     this.addcustomer = new FormGroup({
-
       name: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
-      phone: new FormControl('', [Validators.required, Validators.maxLength(10)])
+      phone: new FormControl('',[Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")])
     })
   }
   submit() {
-    this._add.addCustomer(this.addcustomer.value).then(
-      (res) => {
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      }
-    )
-    this.addcustomer.reset();
+    if(this.addcustomer.valid) {
+      this.httpSearce.addCustomer(this.addcustomer.value).then(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+          console.log(err);
+        }
+      )
+      this.addcustomer.reset();
+    }
+    else{
+    }
   }
 
   showcustomers() {
-    this._add.getCustomer().subscribe((res) => {
+    this.httpSearce.getCustomer().subscribe((res) => {
       this.data = res;
     })
   }
@@ -50,5 +60,35 @@ export class AddcustomerComponent implements OnInit {
 
   gotoCustomerOrder() {
     this.router.navigate(['/orderpagecustomer'])
+  }
+  getCustomeTotalBalance() {
+    this.httpSearce.showCustomerOrder().subscribe(
+      (res) => {
+        this.totalBalanceList = res;
+        this.tempArray = res
+      }
+    )
+    this.cal()
+  }
+  cal() {
+    let totalBalance = 0;
+    let totalpaid = 0;
+    let total = 0;
+    for (let item of this.totalBalanceList) {
+      totalBalance += item['Balance14'];
+      totalpaid += item['paid14']
+      total += item['total14']
+    }
+    this.balance = totalBalance
+    this.paid = totalpaid
+    this.total= total
+  }
+  customerTotal(name:any){
+    this.totalBalanceList=this.tempArray.filter((item:any)=>{
+      if(item.name == name){
+        return item
+      }
+      })
+      this.cal()
   }
 }

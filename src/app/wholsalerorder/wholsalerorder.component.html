@@ -23,8 +23,11 @@
         </tr>
         <tr>
             <th>Product Name</th>
-            <td><input type="text" style="width:164px;height: 40px;" placeholder="Enter Product Name"
-                    formControlName="pname"></td>
+            <td>
+                <select formControlName="pname" style="width:164px;height: 40px;">
+                <option *ngFor="let productName of productNameList">{{productName.name}}</option>
+            </select>
+            </td>
             <th>Total</th>
             <td><input type="number" style="width:164px;height: 40px;" [(ngModel)]='myModel.Total'
                     (ngModelChange)="calculate()" formControlName="total" readonly>

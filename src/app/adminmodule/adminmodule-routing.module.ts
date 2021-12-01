@@ -12,82 +12,111 @@ import { PaymentComponent } from '../payment/payment.component';
 import { ProdbaldetailComponent } from '../prodbaldetail/prodbaldetail.component';
 import { ProductComponent } from '../product/product.component';
 import { ProductbalComponent } from '../productbal/productbal.component';
+import { ProftLossComponent } from '../proft-loss/proft-loss.component';
+import { TestComponent } from '../test/test.component';
+import { TotalBalnceOfCustomerComponent } from '../total-balnce-of-customer/total-balnce-of-customer.component';
 import { WholesalerOrderDetailComponent } from '../wholesaler-order-detail/wholesaler-order-detail.component';
 import { WholesalerComponent } from '../wholesaler/wholesaler.component';
+import { WholsalerTotalBalanceComponent } from '../wholsaler-total-balance/wholsaler-total-balance.component';
 import { WholsalerorderComponent } from '../wholsalerorder/wholsalerorder.component';
 import { AdminlayoutComponent } from './adminlayout/adminlayout.component';
 
 const routes: Routes = [
   {
-    path:'' ,
-    component:AdminlayoutComponent,
-    children:[
+    path: '',
+    component: AdminlayoutComponent,
+    children: [
       {
-        path:'admincustomer', 
-        component:AddcustomerComponent
-      },
-      {
-        path:'product',
-        component:ProductComponent
-      },
-      {
-        path:'dailyrate',
-        component:DailyRateComponent
-      },
-      {
-        path:'productbal',
-        component:ProductbalComponent
-      },
-      {
-        path:'goto',
-        component:ProdbaldetailComponent
-      },
-     
-      {
-        path:'order',
-        component:CustomeroderComponent
-      },
-      {
-        path:'Orderdetail',
-        component:OrderdetailComponent
-      },
-      {
-        path:'payment',
-        component:PaymentComponent
-      },
-      {
-        path:'home',
+        path:'',
         component:HomeComponent
       },
-     {
-       path:'wholesaler',
-       component:WholesalerComponent
-     },
-     {
-       path:'orderpagewholsaler',
-       component:WholesalerOrderDetailComponent
-     },
-     {
-      path:'paymentpageWholsaler',
-      component:PaymentOfWholesalerComponent
-    },
-    {
-      path:'paymentpagecustomer',
-      component:PaymentOfCustomerComponent
-    },
-    {
-      path:'orderpagecustomer',
-      component:OrderdetailComponent
-    },
-    {
-      path:'Wholsaler',
-      component:WholesalerOrderDetailComponent
+      {
+        path: 'admincustomer',
+        component: AddcustomerComponent
+      },
+      {
+        path: 'product',
+        component: ProductComponent
+      },
+      {
+        path: 'dailyrate',
+        component: DailyRateComponent
+      },
+      {
+        path: 'productbal',
+        component: ProductbalComponent
+      },
+      {
+        path: 'goto',
+        component: ProdbaldetailComponent
+      },
 
-    },{
-      path:'UpdateWholsaler',
-      component:WholsalerorderComponent
-    }
-      
+      {
+        path: 'order',
+        component: CustomeroderComponent
+      },
+      {
+        path: 'Orderdetail',
+        component: OrderdetailComponent
+      },
+      {
+        path: 'payment',
+        component: PaymentComponent
+      },
+      {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'wholesaler',
+        component: WholesalerComponent
+      },
+      {
+        path: 'orderpagewholsaler',
+        component: WholesalerOrderDetailComponent
+      },
+      {
+        path: 'paymentpageWholsaler',
+        component: PaymentOfWholesalerComponent
+      },
+      {
+        path: 'paymentpagecustomer',
+        component: PaymentOfCustomerComponent
+      },
+      {
+        path: 'orderpagecustomer',
+        component: OrderdetailComponent
+      },
+      {
+        path: 'Wholsaler',
+        component: WholesalerOrderDetailComponent
+
+      },
+      {
+        path: 'UpdateWholsaler',
+        component: WholsalerorderComponent
+      },
+      {
+        path: 'totalBalance',
+        component: TotalBalnceOfCustomerComponent
+      },
+      {
+        path: 'test',
+        component: TestComponent
+      },
+      {
+        path: 'wholsalerBalance',
+        component: WholsalerTotalBalanceComponent
+      },
+      {
+        path: 'goto',
+        component: ProdbaldetailComponent
+      },
+      {
+        path:'profitloss',
+        component:ProftLossComponent
+      }
+
     ]
   },
 ];

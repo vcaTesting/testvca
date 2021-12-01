@@ -1,103 +1,137 @@
+
 <div class="row ">
-    <div class="col-2 p-0">
-       <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="height:100vh; position: fixed;width: 235px;">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-              <span class="fs-4">Sidebar</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-              <li class="nav-item">
-                <a routerLink='/home' class="nav-link active" aria-current="page">
-                  <svg class="bi me-2" width="16" height="16"></svg>
-                  Home
-                </a>
-              </li>
+  <div class="col-2 p-0">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+      style="height:100vh; position: fixed;width: 235px;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap"></use>
+        </svg>
+        <span class="fs-4" style="color: rgb(228, 11, 11);">AArshiya Chicken </span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li >
+          <a routerLink='/home' routerLinkActive="route" class="nav-link" aria-current="page">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <a routerLink="/admincustomer"  routerLinkActive="route" class="nav-link ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Customers
+          </a>
+        </li>
 
-              
-            
-              <li>
-                <a routerLink="/admincustomer" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"></svg>
-                  Customers
-                </a>
-              </li>
-
-              <li>
-                <a routerLink="/wholesaler" class="nav-link text-white" >
-                  <svg class="bi me-2" width="16" height="16"></svg>
-                  wholasaler
-                </a>
-              </li>
-              <li>
-                <a routerLink="/productbal" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"></svg>
-                  Product Bal
-                </a>
-              </li>
-              
-              <li>
-                <a routerLink="/payment" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"></svg>
-                  Payment
-                </a>
-              </li>
-              <li>
-                <a routerLink='/product' class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                  Today Rate
-                </a>
-              </li>
-              <li>
-                <a routerLink="/dailyrate" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"></svg>
-                  Daily Rate
-                </a>
-              </li>
-              <li>
-                <a routerLink="/order" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"></svg>
-                  Order
-                </a>
-              </li>
-              <li>
-                <a routerLink="/Orderdetail" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"></svg>
-                  Orderdetail
-                </a>
-              </li>
-              <li>
-                <a routerLink="/Wholsaler" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"></svg>
-                  Wholsaler Order Details
-                </a>
-              </li>
-              <li>
-                <a routerLink="/UpdateWholsaler" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"></svg>
-                Update  Wholsaler Order
-                </a>
-              </li>
-            </ul>
-            <hr>
-            <div class="dropdown">
-              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>Sign out</strong>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
-                <!-- <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li>
+          <a routerLink="/wholesaler"  routerLinkActive="route" class="nav-link ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            wholasaler
+          </a>
+        </li>
+        <li>
+          <a routerLink="/payment"  routerLinkActive="route" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Payment
+          </a>
+        </li>
+        <li>
+          <a routerLink='/product'  routerLinkActive="route" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16">
+              <use xlink:href="#grid"></use>
+            </svg>
+            Today Rate
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dailyrate"  routerLinkActive="route" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Daily Rate
+          </a>
+        </li>
+        <li>
+          <a routerLink="/productbal"  routerLinkActive="route" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+           Update Product Balance
+          </a>
+        </li>
+        <li>
+          <a routerLink="/goto"  routerLinkActive="route" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            View Product Balance
+          </a>
+        </li>
+        
+        <li>
+          <a routerLink="/order"  routerLinkActive="route" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Update Customer Order
+          </a>
+        </li>
+        <li>
+          <a routerLink="/Orderdetail"  routerLinkActive="route"  class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Customer Order Detail
+          </a>
+        </li>
+        <li>
+          <a routerLink="/UpdateWholsaler"  routerLinkActive="route" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Update Wholsaler Order
+          </a>
+        </li>
+        <li>
+          <a routerLink="/Wholsaler"  routerLinkActive="route" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Wholsaler Order Details
+          </a>
+        </li>
+        <li>
+          <a routerLink="/totalBalance"  routerLinkActive="route" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Customer Total Balance
+          </a>
+        </li>
+        <li>
+          <a routerLink="/wholsalerBalance"  routerLinkActive="route" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Wholsaler Total Balance
+          </a>
+        </li>
+        <!-- <li>
+          <a routerLink="/test" class="nav-link  ">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Test
+          </a>
+        </li> -->
+        <li>
+          <a routerLink="/profitloss"  routerLinkActive="route" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"></svg>
+           Profit-Loss      
+          </a>
+        </li>
+      </ul>
+      <hr>
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <strong>Sign out</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+          <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
+          <!-- <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li><hr class="dropdown-divider"></li> -->
-                <li><a class="dropdown-item" routerLink="/login">Sign out</a></li>
-              </ul>
-            </div>
-          </div>
+          <li><a class="dropdown-item" routerLink="/login">Sign out</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="col-10 p-0">
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="height: 64px;">
-            <!-- <a class="navbar-brand" href="#">Navbar</a>
+  </div>
+  <div class="col-10 p-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="height: 64px;">
+      <!-- <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -124,9 +158,9 @@
                 </li>
               </ul>
             </div> -->
-          </nav>
-          <div class="container my-2">
-            <router-outlet></router-outlet>
-          </div>
+    </nav>
+    <div class="container my-2">
+      <router-outlet></router-outlet>
     </div>
+  </div>
 </div>

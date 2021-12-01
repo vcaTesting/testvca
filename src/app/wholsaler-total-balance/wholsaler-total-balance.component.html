@@ -1,0 +1,50 @@
+
+<div class="row">
+    <div class="col-md-4 mt-3">
+       <mat-form-field appearance="outline" class="full-width-field">
+        <mat-label>Select Name</mat-label>
+        <mat-select [(ngModel)]="filterTerm" (selectionChange)="search()" >
+          <mat-option *ngFor="let name of nameOfwholsaler" [value]="name.name">
+            {{name.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+       </div>
+       <div class="col-md-4 mt-3">
+          <div class="form-group">
+            <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate"  placeholder="Search Wholesaler by Date">
+          </div>
+        </div>
+        <div class="col-md-4 mt-3">
+          <button class="btn btn-primary py-2" (click)="showallOrder()">Show All Customers Order</button>
+ 
+        </div>
+ </div>
+
+<table class="table table-striped" *ngIf="showDataTable">
+  <tr class="tbody">
+    <th><button class="btn btn-primary" (click)="total()">Total</button></th>
+    <th></th>
+    <th>{{totalAmount}}</th>
+    <th>{{totalPaid}}</th>
+    <th>{{totalBalance}}</th>
+  </tr>
+    <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Total</th>
+        <th>Paid</th>
+        <th>Balance</th>
+    </tr>
+    <tr *ngFor="let balance of totalBalanceList | filter:searchByDate | filter:filterTerm">
+        <td>{{balance.date}}</td>
+        <td>{{balance.name}}</td>
+        <td>{{balance.total}}</td>
+        <td>{{balance.Paid}}</td>
+        <td>{{balance.Balance}}</td>
+    </tr>
+    <tr>
+        
+
+    </tr>
+</table>

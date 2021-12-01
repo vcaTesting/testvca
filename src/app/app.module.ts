@@ -37,7 +37,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { WholesalerOrderDetailComponent } from './wholesaler-order-detail/wholesaler-order-detail.component';
-
+import { TotalBalnceOfCustomerComponent } from './total-balnce-of-customer/total-balnce-of-customer.component';
+import { TestComponent } from './test/test.component';
+import { WholsalerTotalBalanceComponent } from './wholsaler-total-balance/wholsaler-total-balance.component';
+import { ProftLossComponent } from './proft-loss/proft-loss.component';
 const firebaseConfig = {
   apiKey: "AIzaSyAULT8jgP2zMgs5dJVWvjd7LCLQYrxdYsQ",
   authDomain: "parvej-d8cec.firebaseapp.com",
@@ -67,6 +70,10 @@ const firebaseConfig = {
     PaymentOfWholesalerComponent,
     PaymentOfCustomerComponent,
     WholesalerOrderDetailComponent,
+    TotalBalnceOfCustomerComponent,
+    TestComponent,
+    WholsalerTotalBalanceComponent,
+    ProftLossComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +94,7 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule,// storage
     
   ],
   providers: [],

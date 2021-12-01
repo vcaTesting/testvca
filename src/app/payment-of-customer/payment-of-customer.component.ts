@@ -7,18 +7,38 @@ import { FirebaseService } from '../firebase.service';
   styleUrls: ['./payment-of-customer.component.scss']
 })
 export class PaymentOfCustomerComponent implements OnInit {
-
-  constructor(private http:FirebaseService) { }
-  customerPaymentList:any=[];
+  searchbyName: any;
+  searchByDate: any;
+  showDatatable:boolean = false;
+  CustomerList:any=[]
+  constructor(private http: FirebaseService) { }
+  customerPaymentList: any = [];
   ngOnInit(): void {
     this.getCustomerPayment()
+    this.getCustomerName()
   }
-  getCustomerPayment(){
+  getCustomerPayment() {
     this.http.getCustomerPayment().subscribe(
-      (res)=>{
+      (res) => {
         this.customerPaymentList = res
-  }
+      }
     )
+
+  }
+  getCustomerName(){
+    this.http.getCustomer().subscribe(
+      (res)=>{
+        this.CustomerList = res
+      }
+    )
+  }
+  search(){
+   this.showDatatable = true
+  }
+  showallPayment(){
+    this.searchbyName = '';
+    this.searchByDate = '';
+    this.showDatatable = true
 
   }
 }
