@@ -3,7 +3,7 @@
       <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate" (ngModelChange)="search()" placeholder="Search product Balance by Date">
     </div>
   </div>
-
+<mat-card>
 <table class="table table-striped" *ngIf="showDatatable">
 
     <tr>
@@ -86,5 +86,4 @@
 
     </tr>
 </table>
-
-<button (click)="back()" *ngIf="showDatatable">=Back</button>
+</mat-card>

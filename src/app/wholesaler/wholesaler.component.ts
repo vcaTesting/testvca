@@ -48,6 +48,7 @@ addWholesaler(){
     this.save.savewholesaler(this.saveWholesalerform.value).then(
       (res)=>{
         console.log(res)
+        console.log(this.saveWholesalerform.value)
       }
     )
       this.saveWholesalerform.reset();
@@ -63,6 +64,7 @@ WholsalerName(){
       this.WholsalerNameList = res;
     }
   )
+  console.log(this.WholsalerNameList)
   }
   gotoWholsalerOrder(){
    this.router.navigate(['/orderpagewholsaler'])

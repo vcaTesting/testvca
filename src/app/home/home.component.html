@@ -24,6 +24,10 @@
                             </h2>
                         </div>
                         <div class="col-6 text-right">
+                            <!-- <span><button mat-icon-button (click)="cal()">
+                                <mat-icon >remove_red_eye</mat-icon><p>0</p><i class="fa fa-arrow-up"></i>
+                            </button>
+                        </span> -->
                             <span><mat-icon (click)="cal()">remove_red_eye</mat-icon><p>{{balance}}</p><i class="fa fa-arrow-up"></i></span>
                         </div>
                     </div>
@@ -82,7 +86,7 @@
                             </h2>
                         </div>
                         <div class="col-6 text-right">
-                            <span>45454 <i class="fa fa-arrow-up"></i></span>
+                            <span>{{collection}} <i class="fa fa-arrow-up"></i></span>
                         </div>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
@@ -92,7 +96,7 @@
                             </h2>
                         </div>
                         <div class="col-6 text-right">
-                                <span><mat-icon >remove_red_eye</mat-icon><p>0</p><i class="fa fa-arrow-up"></i></span>
+                                <span><mat-icon >remove_red_eye</mat-icon><p>{{todaysDate}}</p><i class="fa fa-arrow-up"></i></span>
                         </div>
                     </div>
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
@@ -122,7 +126,10 @@
                                 Balance </h2>
                         </div>
                             <div class="col-6 text-right">
-                                <span><mat-icon >remove_red_eye</mat-icon><p>0</p><i class="fa fa-arrow-up"></i></span>
+                                <span><button mat-icon-button>
+                                    <mat-icon >remove_red_eye</mat-icon><p>0</p><i class="fa fa-arrow-up"></i>
+                                </button>
+                            </span>
                             </div>
                     </div>
 
@@ -135,14 +142,18 @@
         </div>
     </div>
 </div>
-<div class="row clearfix">
+<div class="row clearfix m-1">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="header">
-                <h2>Customer Details <span style="margin-left:10px;"><input matInput type="text"
-                            placeholder="Search Customer Name" [(ngModel)]="searchCustomerName"
-                            style="margin-top: 13px;"></span></h2>
-            </div>
+               
+                        <h2>Customer Details
+                    <input matInput type="text"
+                    placeholder="Search Customer Name" [(ngModel)]="searchCustomerName"
+                    >
+                    </h2>
+              </div>      
+           
             <div class="tableBody">
                 <div class="table-responsive">
                     <table class="table table-hover ">
@@ -159,19 +170,20 @@
                         <tbody>
                             <tr *ngFor="let customer of data | filter:searchCustomerName index as i ">
                                 <td>{{i+1}}</td>
-                                <td><a href="mailto:test@gmail.com">{{customer.name}}</a></td>
+                                <td>{{customer.name}}</td>
                                 <td>
-                                    <div style="color: red;">{{customer.phone}}</div>
+                                    <div >{{customer.phone}}</div>
                                 </td>
                                 <td>{{customer.address}}</td>
-                               
-                                <!-- <td><button (click)="customerTotal(customer.name,customer.id)">view</button>{{balance}}</td> -->
-                               <td><mat-icon (click)="customerTotal(customer.name,customer.id)">remove_red_eye</mat-icon><br><p>{{balance}}</p></td>
-                                <td>
+                               <td><button mat-icon-button>
+                                <mat-icon data-toggle="modal" data-target="#balanceModal" (click)="customerTotal(customer.name,customer.id)">remove_red_eye</mat-icon>
+                               </button>
+                               </td>
+                               <td>
                                     <button mat-icon-button (click)="patchvalueofCustomer(customer)" data-toggle="modal" data-target="#exampleModal">
                                         <mat-icon>edit</mat-icon>
                                     </button>
-                                    <button mat-icon-button (click)="deleteLead($event, customer)">
+                                    <button mat-icon-button  (click)="deleteLead($event, customer)">
                                         <mat-icon>delete</mat-icon>
                                     </button>
                                 </td>
@@ -185,7 +197,7 @@
 
 </div>
 
-<div class="row clearfix">
+<div class="row clearfix m-1">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="header">
@@ -209,21 +221,25 @@
                         <tbody>
                             <tr *ngFor="let wholsaler of wholsalerList | filter:searchWholsalerName index as i">
                                 <td>{{i+1}}</td>
-                                <td><a href="mailto:test@gmail.com">{{wholsaler.name}}</a></td>
+                                <td>{{wholsaler.name}}</td>
                                 <td>
-                                    <div style="color: red;">
+                                    <div >
                                         {{wholsaler.number}}
                                     </div>
                                 </td>
                                 <td>{{wholsaler.address}}</td>
                                 <!-- <td><button (click)="wholsalerTotal(wholsaler.name)">view</button>{{wholsalerBalance}}</td> -->
-                                <td><mat-icon (click)="wholsalerTotal(wholsaler.name,i)">remove_red_eye</mat-icon><br><p>{{wholsalerBalance}}</p></td>
+                                <td><button mat-icon-button>
+                                    <mat-icon  data-toggle="modal" data-target="#WholsalerbalanceModal" (click)="wholsalerTotal(wholsaler.name)">remove_red_eye</mat-icon>
+                                </button>
+                                </td>
                                 <td>
-                                    <button mat-icon-button data-toggle="modal" (click)="patchValueWholsaler(wholsaler)"
-                                        data-target="#wholsalerUpdateModel">
+                                    <button mat-icon-button data-toggle="modal" 
+                                        data-target="#wholsalerUpdateModel" (click)="patchValueWholsaler(wholsaler)">
                                         <mat-icon>edit</mat-icon>
                                     </button>
-                                    <button mat-icon-button (click)="deleteWholsaler($event, wholsaler)">
+                                    <button mat-icon-button  (click)="wantToDeleteWholsaler(wholsaler)"
+                                    data-toggle="modal" data-target="#deleteWholsaler">
                                         <mat-icon>delete</mat-icon>
                                     </button>
                                 </td>
@@ -235,7 +251,6 @@
         </div>
     </div>
 </div>
-
 <!--Customer Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -345,3 +360,112 @@
         </div>
     </div>
 </div>
+<!-- customer balance modal -->
+  <div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{selectedCustomerBalnce}} Balance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <h3 mat-dialog-title style="color: red;">Balance</h3>
+                <div mat-dialog-content>
+                  <ul class="clearfix">
+                    <li>
+                      <p><span class="font-weight-bold"> Name: </span>{{selectedCustomerBalnce}}</p>
+                    </li>
+                    <li>
+                      <p><span class="font-weight-bold"> Balance: </span>{{ balance }}</p>
+                    </li>
+                   
+                  </ul>
+                </div>
+               
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-accent" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Wholsaler Balance modal -->
+  <div class="modal fade" id="WholsalerbalanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{selectedCustomerBalnce}} Balance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <h3 mat-dialog-title style="color: red;">Balance</h3>
+                <div mat-dialog-content>
+                  <ul class="clearfix">
+                    <li>
+                      <p><span class="font-weight-bold"> Name: </span>{{selectedWholsalerName}}</p>
+                    </li>
+                    <li>
+                      <p><span class="font-weight-bold"> Balance: </span>{{ wholsalerBalance }}</p>
+                    </li>
+                   
+                  </ul>
+                </div>
+               
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-accent" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Wholsaler Account Delete -->
+
+  <div class="modal fade" id="deleteWholsaler" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Balance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <h3 mat-dialog-title style="color: red;">Balance</h3>
+                <div mat-dialog-content>
+                  <ul class="clearfix">
+                    <li>
+                      <p><span class="font-weight-bold"> Name: </span>{{deletedWholsaler?.name}}</p>
+                    </li>
+                    <li>
+                        <p><span class="font-weight-bold"> Address: </span>{{ deletedWholsaler?.number }}</p>
+                      </li>
+                    <li>
+                      <p><span class="font-weight-bold"> Address: </span>{{ deletedWholsaler?.address }}</p>
+                    </li>
+                   
+                  </ul>
+                </div>
+               
+              </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" (click)="deleteWholsaler($event, deletedWholsaler)" class="btn btn-danger" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-accent" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 

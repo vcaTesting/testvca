@@ -24,6 +24,11 @@ export class WholsalerorderComponent implements OnInit {
     balance: 0
   }
   image: any
+  selectedwholsaler:any;
+  orderDate:any
+  totalBalanceList:any = []
+  tempArray:any = [];
+  totalAmount:any
   constructor(private http: FirebaseService
 
   ) { }
@@ -42,6 +47,8 @@ export class WholsalerorderComponent implements OnInit {
       file: new FormControl('')
     })
     this.WholsalerName()
+    this.getWholsalerBalance
+    this.cal()
   }
   submit() {
     if (this.wholsalerform.valid) {
@@ -69,4 +76,28 @@ export class WholsalerorderComponent implements OnInit {
       }
     )
   }
+  selectedWholsaler(data:any){
+    this.selectedwholsaler = data.value
+    console.log(this.selectedwholsaler)
+    this.cal()
+  }
+
+  getWholsalerBalance() {
+    this.http.getOrderofWholsaler().subscribe(
+      (res) => {
+        this.totalBalanceList = res
+        this.tempArray = res
+      })
+  }
+
+  cal() {
+    let totalBalance = 0;
+    for (let item of this.totalBalanceList) {
+      if (item.name == this.selectedwholsaler.name) {
+      totalBalance += item['Balance'];
+    }
+  }
+    this.totalAmount = totalBalance
+    console.log(this.totalAmount)
+}
 }

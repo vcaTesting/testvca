@@ -1,5 +1,5 @@
+<!-- <form [formGroup]="wholsalerform">
 
-<form [formGroup]="wholsalerform">
     <table class="table table-striped">
         <tr>
             <th>Date</th>
@@ -46,10 +46,7 @@
             <th>Upload Bill</th>
             <td><input type="File" style="width:164px;height: 40px;" placeholder="Enter Balance" formControlName="file">
               
-<!--                     
-                        <img [src]="image ?image: 'assets/images/img_507349.png'" style="width: 50px; height: 50px;"
-                            class="img-circle user-img-circle" alt="User Image" />
-    -->
+
             </td>
             <th>Balance</th>
             <td><input type="text" style="width:164px;height: 40px;" placeholder="Enter Balance"
@@ -66,4 +63,148 @@
         </tr>
     </table>
 
+</form> -->
+<form [formGroup]="wholsalerform">
+<div class="row">
+    <div class="col-4 ">
+        <div class="form-group">
+            <input type="date" matInput class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="orderDate">
+        </div>
+    </div>
+
+<div class="col-4">
+    <mat-form-field appearance="outline">
+        <mat-label>Select Customer</mat-label>
+        <mat-select (selectionChange)="selectedWholsaler($event)">
+            <mat-option *ngFor="let name of WholsalerNameList" [value]="name">
+                {{name.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</div>
+</div>
+<table class="body-wrap">
+    <tbody>
+        <tr>
+            <td></td>
+            <td class="container" width="600">
+                <div class="content">
+                    <table class="main" width="100%" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td class="content-wrap aligncenter">
+                                    <table width="100%" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <td class="content-block">
+                                                    <h2>AArshiya chicken Center</h2>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content-block">
+                                                    <table class="invoice">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Invoice Id #{{selectedwholsaler?.id}}<br>
+                                                                    Name: {{selectedwholsaler?.name}}<br>
+                                                                    Phone No: {{selectedwholsaler?.number}}<br>
+                                                                    Address: {{selectedwholsaler?.address}}<br>
+                                                                    {{orderDate}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="invoice-items" cellpadding="0"
+                                                                        cellspacing="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>
+                                                                                <mat-form-field appearance="outline">
+                                                                                    <!-- <mat-label>Select Product</mat-label> -->
+                                                                                    <mat-select  formControlName="pname">
+                                                                                        <mat-option *ngFor="let name of productNameList" [value]="name">
+                                                                                            {{name.name}}
+                                                                                        </mat-option>
+                                                                                    </mat-select>
+                                                                                </mat-form-field>
+                                                                                </td>
+                                                                                <!-- <td>Service 1</td> -->
+                                                                                <td class="alignright"></td> 
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Qt</td>
+                                                                                <td class="alignright">
+                                                                                    <input type="number" matInput>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Weight</td>
+                                                                                <td class="alignright"><input type="number" matInput [(ngModel)]='myModel.Weight'
+                                                                                    (ngModelChange)="calculate()" formControlName="Weight"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Rate</td>
+                                                                                <td class="alignright"><input type="number" matInput  [(ngModel)]='myModel.rate'
+                                                                                    (ngModelChange)="calculate()" formControlName="Rate"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Total</td>
+                                                                                <td class="alignright"><input type="number" matInput [(ngModel)]='myModel.Total'
+                                                                                    (ngModelChange)="calculate()" formControlName="total" readonly></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Paid</td>
+                                                                                <td class="alignright">
+                                                                                    <input type="number" matInput [(ngModel)]='myModel.paid'
+                                                                                    (ngModelChange)="calculate()" formControlName="Paid">
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Total Balance</td>
+                                                                                <td class="alignright">
+                                                                                    <input type="number" matInput
+                                                                                  formControlName="Balance" [(ngModel)]='myModel.balance' readonly>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content-block">
+                                                    <button type="button" style="width:164px;height: 40px;" class="btn btn-success"
+                (click)="submit()">submit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content-block">
+                                                    Company Inc. 123 Van Ness, San Francisco 94102
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="footer">
+                        <table width="100%">
+                            <tbody>
+                                <tr>
+                                    <td class="aligncenter content-block">Questions? Email <a
+                                            href="mailto:">support@company.inc</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 </form>

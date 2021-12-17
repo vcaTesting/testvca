@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../firebase.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
+import { DeleteDialogComponentComponent } from '../delete-dialog-component/delete-dialog-component.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +13,9 @@ import { FirebaseService } from '../firebase.service';
 })
 export class HomeComponent implements OnInit {
   data: any = [];
+
   wholsalerList: any = [];
-  balanceofWholsaler: any = [];
-  balanceOfCustomer: any = [];
-  paidBalnce: any;
+  // paidBalnce: any;
   wholsalername: any;
   balance: any;
   wholsalerBalance: any;
@@ -23,16 +26,28 @@ export class HomeComponent implements OnInit {
   totalBalanceList: any = [];
   tempData: any = [];
   tempArray: any = [];
+  totalBalance:any;
+  selectedWholsalerName:any
   totalWholsalerBalance: any = [];
-  constructor(private httpService: FirebaseService) { }
+  selectedCustomerBalnce: any;
+  deletedWholsaler: any;
+  currentDate:any;
+  todaysDate:any;
+  todaysPayment:any=[];
+  temp:any=[];
+  collection:any
+  constructor(private httpService: FirebaseService,
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    private datePipe:DatePipe
+    ) { }
   ngOnInit(): void {
     this.getCustomerName();
     this.getWholsalerDetail();
     this.getWholsalerBalance();
-    this.getCustomerBalance();
     this.getCustomeTotalBalance();
-    this.getWholsalerBalance();
-    this.wholsalerTotal('0','1')
+    this.cal()
+    this.getTodaysPayment()
     this.updateCustomerDetailForm = new FormGroup({
       name: new FormControl('', Validators.required),
       number: new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
@@ -43,6 +58,8 @@ export class HomeComponent implements OnInit {
       number: new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
       address: new FormControl('', Validators.required),
     })
+    this.currentDate = new Date()
+    this.todaysDate = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd')
   }
   getCustomerName() {
     this.httpService.getCustomer().subscribe(
@@ -57,34 +74,55 @@ export class HomeComponent implements OnInit {
         this.wholsalerList = res
       }
     )
+    
   }
   getWholsalerBalance() {
     this.httpService.getOrderofWholsaler().subscribe(
       (res) => {
         this.totalWholsalerBalance = res
+        this.tempData = res
       }
     )
     this.total()
   }
-  getCustomerBalance() {
-    this.httpService.getCustomerPayment().subscribe(
-      (res) => {
-        this.balanceOfCustomer = res
-      }
-    )
-  }
+ 
   deleteLead(event: any, item: any) {
-    var result = confirm("Do you want Delete")
-    if (result == true) {
-      this.httpService.deleteCustomer(item);
+  const dialogRef = this.dialog.open(DeleteDialogComponentComponent, {
+    data: item,
+  });
+  dialogRef.afterClosed().subscribe((result) => {
+    if (result === 1) {
+      this.getCustomerName();
+      this.showNotification(
+        'black',
+        'Edit Record Successfully...!!!',
+        'bottom',
+        'center'
+      );
     }
+  });
+
+  }
+
+   showNotification(colorName:any,text:any, placementFrom:any, placementAlign:any) {
+    this.snackBar.open(text, '', {
+      duration: 2000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
+      panelClass: 'snackbar-danger'
+    });
   }
   deleteWholsaler(event: any, item: any) {
-    var result = confirm("Do you want Delete")
-    if (result == true) {
-      this.httpService.deleteWholsaler(item);
+      this.httpService.deleteWholsaler(item);   
+       this.showNotification(
+      'snackbar-danger',
+      'Delete Record Successfully...!!!',
+      'bottom',
+      'center'
+    );
     }
-  }
+  
+
   getCustomeTotalBalance() {
     this.httpService.showCustomerOrder().subscribe(
       (res) => {
@@ -106,36 +144,69 @@ export class HomeComponent implements OnInit {
     for (let item of this.totalBalanceList) {
       totalBalance += item['Balance14'];
     }
-    this.balance = totalBalance
+    this.balance = totalBalance 
   }
+
   total() {
     let balance = 0;
     for (let item of this.totalWholsalerBalance) {
       balance += item['Balance']
     }
-    this.wholsalerBalance = balance
+    this.wholsalerBalance = balance   
   }
-  customerTotal(name: any, index: any) {
-    this.totalBalanceList = this.tempArray.filter((item: any) => {
-      if (item.name == name) {
-        return item
-      }
-    })
-    this.cal()
+
+  customerTotal(name: any, index: any) {   
+      this.selectedCustomerBalnce =  name
+      this.totalBalanceList = this.tempArray.filter((item: any) => {
+        if (item.name == this.selectedCustomerBalnce) {
+          return item
+        }
+      })
+      this.cal()     
   }
-  wholsalerTotal(name: any,i:any) {
+  wholsalerTotal(name: any) {
+    this.selectedWholsalerName = name
     this.totalWholsalerBalance = this.tempData.filter((item: any) => {
-      if (item.name == name) {
-        return this.totalWholsalerBalance[i].balance=this.wholsalerBalance
+      if (item.name == this.selectedWholsalerName) {
+        return item
       }
     })
     this.total()
   }
+
   patchvalueofCustomer(customer:any){
-    console.log(customer)
     this.updateCustomerDetailForm.get('name').setValue(customer.name)
     this.updateCustomerDetailForm.get('address').setValue(customer.address)
     this.updateCustomerDetailForm.get('number').setValue(customer.phone)
 
   }
+  wantToDeleteWholsaler(wholsaler:any){
+     this.deletedWholsaler = wholsaler
+  }
+
+  getTodaysPayment(){
+    this.httpService.getCustomerPayment().subscribe(
+      (res)=>{
+        this.todaysPayment = res
+        this.temp = res
+        this.todaysPayment = this.temp.filter((item: any) => {
+          if (item.date == this.todaysDate) {
+            return item
+          }
+        }) 
+        console.log(this.todaysPayment)
+        console.log(res)
+      }
+    )
+    this.calculatePayment()
+  }
+  calculatePayment(){
+    let balance = 0;
+    for (let item of this.totalWholsalerBalance) {
+      balance += item['cash']
+    }
+    this.collection = balance   
+  }
+  
 }
+

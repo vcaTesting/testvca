@@ -7,22 +7,22 @@
     box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
 }
 .l-bg-cherry {
-    background: linear-gradient(to right, #493240, #f09) !important;
+    background: linear-gradient(to right, #834d9b, #d04ed6) !important;
     color: #fff;
 }
 
 .l-bg-blue-dark {
-    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    background: linear-gradient(to right, #00b4db, #0083b0) !important;
     color: #fff;
 }
 
 .l-bg-green-dark {
-    background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+    background: linear-gradient(to right, #56ab2f, #a8e063) !important;
     color: #fff;
 }
 
 .l-bg-orange-dark {
-    background: linear-gradient(to right, #a86008, #ffba56) !important;
+    background: linear-gradient(to right, #f7971e, #ffd200) !important;
     color: #fff;
 }
 
@@ -65,3 +65,7 @@
     overflow:scroll;
 }
 
+.snackbar-danger {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: #ffffff;
+  }

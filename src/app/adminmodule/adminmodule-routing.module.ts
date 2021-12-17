@@ -14,6 +14,7 @@ import { ProductComponent } from '../product/product.component';
 import { ProductbalComponent } from '../productbal/productbal.component';
 import { ProftLossComponent } from '../proft-loss/proft-loss.component';
 import { TestComponent } from '../test/test.component';
+import { TimelineComponent } from '../timeline/timeline.component';
 import { TotalBalnceOfCustomerComponent } from '../total-balnce-of-customer/total-balnce-of-customer.component';
 import { WholesalerOrderDetailComponent } from '../wholesaler-order-detail/wholesaler-order-detail.component';
 import { WholesalerComponent } from '../wholesaler/wholesaler.component';
@@ -115,8 +116,11 @@ const routes: Routes = [
       {
         path:'profitloss',
         component:ProftLossComponent
+      },
+      {
+        path:'timeline',
+        component:TimelineComponent
       }
-
     ]
   },
 ];

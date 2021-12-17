@@ -111,8 +111,8 @@ export class CustomeroderComponent implements OnInit {
     date:'',
     name: '',
   };
-  DATA:any
- 
+  DATA:any;
+  date:any
   constructor(private http:FirebaseService)
      { }
 
@@ -315,4 +315,10 @@ public openPDF():void {
       PDF.save('angular-demo.pdf');
     });     
   }
+
+
 }
+
+
+
+

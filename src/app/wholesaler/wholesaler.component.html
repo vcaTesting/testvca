@@ -1,61 +1,114 @@
-<div class="container">
-  <div>
-    <div class="row">
-        <div class="col-4">
+
+    <div class="row m-3" >
+        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="search"> <i class="fa fa-search "></i> <input type="text" class="form-control" [(ngModel)]="search"
+            placeholder="Search Wholesaler by Name"> 
+           </div>
+          </div>
+           <div class="col-3 col-md-2 col-lg-2 col-xl-2 mt-1">
             <button type="button" class="btn btn-success" (click)="gotoWholsalerPayment()">
                 <b>+</b> Payment Details
                </button> 
+              
         </div>
-        <div class="col-4">
+        <div class="col-3 col-md-2 col-lg-2 col-xl-2 mt-1">
             <button type="button" class="btn btn-success" (click)="gotoWholsalerOrder()" >
                 <b>+</b> Order Details
                </button> 
         </div>
-        <div class="col-4">
+        <div class="col-3 col-md-2 col-lg-2 col-xl-2 mt-1">
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                 <b>+</b> Add Wholesaler
                </button> 
         </div>
     </div>
-      <div class="col-md-6 mt-3">
-        <div class="form-group">
-          <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search Wholesaler by Name">
-        </div>
-      </div>
-      <div class="row tbody">
-        <div class="col-lg-4-sm-12" *ngFor="let list of WholsalerNameList | filter:search">
-          <div class="container d-flex justify-content-center align-items-center">
-            <div class="card mt-3" style="background-color: rgb(196, 185, 207)" (click)="updateWholsalerBalance(list.name)">
-              <div class="upper"> <img src="https://i.imgur.com/Qtrsrk5.jpg" class="img-fluid"> </div>
-              <div class="user text-center">
-                <div class="profile"> <img src="../../assets/profile2.jpg" class="rounded-circle" width="80"> </div>
-              </div>
-              <div class="mt-5 text-center">
-                <h4 class="mb-0">{{list.name}}</h4>
-                <span class="text-muted d-block mb-2">{{list.number}}</span>
-                <span class="text-muted d-block mb-2">{{list.address}}</span> <button
-                  class="btn btn-primary btn-sm follow">Edit</button>
-                <div class="d-flex justify-content-between align-items-center mt-4 px-4">
-                  <div class="stats">
-                    <h5 class="mb-0">Total</h5> <span>{{totalAmount}}</span>
+
+    <div class="row">
+      <div class="col-md-12">
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="material-icons-two-tone pr-3">list_alt</i>
+              Grid View
+            </ng-template>  
+            <div class="row tbody ml-3 mt-3" >
+              <div class="col-lg-4 col-sm-12" *ngFor="let list of WholsalerNameList  | filter:search let i= index">
+                <div class="m-b-20">
+                  <div class="card border-apply"(click)="updateWholsalerBalance(list.name)">
+                  <div class="contact-grid" >
+                    <div class="profile-header l-bg-purple-dark">
+                      <div class="user-name">{{list.name}}</div>
+                      <div class="name-center">Mathematics</div>
+                    </div>
+                    <img src="../../assets/prof3.jpg" class="user-img" alt="">
+                    <p>
+                      {{list.address}}
+                      <br />Pune
+                    </p>
+                    <div>
+                      <span class="phone">
+                        <i class="material-icons">phone</i>{{list.number}}</span>
+                    </div>
+                    <div class="profile-userbuttons">
+                      <button class="btn btn-primary">Edit</button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center m-2 px-4">
+                      <div class="stats">
+                        <h5 class="mb-0">Total</h5> <span>{{totalAmount}}</span>
+                      </div>
+                      <div class="stats">
+                        <h5 class="mb-0">Paid</h5> <span>{{totalPaid}}</span>
+                      </div>
+                      <div class="stats">
+                        <h5 class="mb-0">Balance</h5> <span>{{totalBalance}}</span>
+                      </div>
                   </div>
-                  <div class="stats">
-                    <h5 class="mb-0">Paid</h5> <span>{{totalPaid}}</span>
-                  </div>
-                  <div class="stats">
-                    <h5 class="mb-0">Balance</h5> <span>{{totalBalance}}</span>
                   </div>
                 </div>
               </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-
-</div>
-
-
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="material-icons-two-tone pr-3">list_alt</i>
+              List View
+            </ng-template>  
+            <mat-card>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of WholsalerNameList | filter:search let i= index">
+                  <td>{{item.name}}</td>
+                  <td>{{item.number}}</td>
+                  <td>{{item.address}}</td>
+                  <td><button mat-icon-button color="accent" class="btn-tbl-edit"
+                    >
+                     <mat-icon aria-label="Edit" class="col-white">edit
+                     </mat-icon>
+                   </button></td>
+                   <td> <button mat-icon-button color="accent" class="btn-tbl-delete"
+                    >
+                     <mat-icon aria-label="Delete" class="col-white">delete
+                     </mat-icon>
+                   </button></td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-card>
+            </mat-tab>
+            </mat-tab-group>
+            </div>
+            </div>
+     
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -106,6 +159,7 @@
     </div>
   </div>
 
+</div>
 </div>
 
 

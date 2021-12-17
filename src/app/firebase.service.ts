@@ -324,6 +324,7 @@ interface test2 {
   providedIn: 'root'
 })
 export class FirebaseService {
+  [x: string]: any;
   //Customer Add in List
   customerData: AngularFirestoreCollection<customer>; //set
   leads: Observable<customer[]>; //get
@@ -565,4 +566,8 @@ export class FirebaseService {
     this.deletewholsaler = this.fireStre.doc(`wholsalerList/${data.id}`);
     this.deletewholsaler.delete();
   }
+
+
+
+ 
 }

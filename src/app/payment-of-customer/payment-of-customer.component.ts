@@ -21,6 +21,7 @@ export class PaymentOfCustomerComponent implements OnInit {
     this.http.getCustomerPayment().subscribe(
       (res) => {
         this.customerPaymentList = res
+     
       }
     )
 
@@ -38,6 +39,7 @@ export class PaymentOfCustomerComponent implements OnInit {
   showallPayment(){
     this.searchbyName = '';
     this.searchByDate = '';
+    this.getCustomerPayment()
     this.showDatatable = true
 
   }

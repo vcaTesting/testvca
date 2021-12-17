@@ -1,11 +1,10 @@
-
-    <div class="col-md-4 mt-3">
+<div class="col-md-4 mt-3">
         <div class="form-group">
           <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate" (ngModelChange)="search()" placeholder="Search Wholesaler by Date">
         </div>
       </div>
-<div class="card">
-    <table class="table table-striped" *ngIf="showDatatable">
+      <mat-card>
+        <table class="table table-striped" *ngIf="showDatatable">
         <tr>
             <th>date</th>
             <th>product Name</th>
@@ -138,8 +137,6 @@
         <td>{{i.gprp}}</td>
     </tr>
     </table>
-</div>
 
-
-
+</mat-card>
 

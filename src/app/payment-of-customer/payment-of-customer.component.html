@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-4 mt-3">
             <div class="form-group">
-              <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate" (ngModelChange)="search()" placeholder="Search Wholesaler by Date">
+              <input type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate" (ngModelChange)="search()" placeholder="Search Wholesaler by Date">
             </div>
           </div>
           <div class="col-md-4 mt-3">
@@ -24,7 +24,7 @@
 </div>
 
 
-        <table class="table table-striped" *ngIf="showDatatable">
+        <table class="table table-striped" >
             <thead>
                 <tr>
                     <th>Date</th>
@@ -36,7 +36,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let payment of customerPaymentList | filter:searchbyName | filter:searchByDate ">
-                    <th>{{payment.date}}</th>
+                    <th>{{payment.date }}</th>
                     <th>{{payment.name}}</th>
                     <th>{{payment.cash}}</th>
                     <th>{{payment.cheque}}</th>

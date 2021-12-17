@@ -1,8 +1,7 @@
-
-<div class="row ">
-  <div class="col-2 p-0">
+<div class="row p-0 m-0 "  >
+  <div class="p-0 {{showSidebar ? 'col-2' : 'd-none'}}" >
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
-      style="height:100vh; position: fixed;width: 235px;">
+      style=" height:100vh; position: fixed;width: 235px; " >
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <svg class="bi me-2" width="40" height="32">
           <use xlink:href="#bootstrap"></use>
@@ -17,6 +16,25 @@
             Home
           </a>
         </li>
+         <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Customer
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a routerLink="/admincustomer"  routerLinkActive="route" class="nav-link ">
+              <svg class="bi me-2" width="16" height="16"></svg>
+              Customers
+            </a>
+            <a routerLink="/order"  routerLinkActive="route" class="nav-link  ">
+              <svg class="bi me-2" width="16" height="16"></svg>
+              Update Customer Order
+            </a>
+            <a routerLink="/paymentpagecustomer"  routerLinkActive="route" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"></svg>
+             Payment Of customers      
+            </a>
+          </div>
+        </li> -->
         <li>
           <a routerLink="/admincustomer"  routerLinkActive="route" class="nav-link ">
             <svg class="bi me-2" width="16" height="16"></svg>
@@ -99,16 +117,24 @@
             Wholsaler Total Balance
           </a>
         </li>
-        <!-- <li>
-          <a routerLink="/test" class="nav-link  ">
-            <svg class="bi me-2" width="16" height="16"></svg>
-            Test
-          </a>
-        </li> -->
+        
         <li>
           <a routerLink="/profitloss"  routerLinkActive="route" class="nav-link text-white">
             <svg class="bi me-2" width="16" height="16"></svg>
            Profit-Loss      
+          </a>
+        </li>
+        <li>
+          <li>
+            <a routerLink="/timeline"  routerLinkActive="route" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"></svg>
+            TimeLine  
+            </a>
+          </li>
+          <li>
+          <a routerLink="/paymentpagecustomer"  routerLinkActive="route" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"></svg>
+           Payment Of customers      
           </a>
         </li>
       </ul>
@@ -120,18 +146,19 @@
           <strong>Sign out</strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-          <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
-          <!-- <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li> -->
+         
           <li><a class="dropdown-item" routerLink="/login">Sign out</a></li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="col-10 p-0">
+  <div class="{{showSidebar ? 'col-10' : 'col-12'}} p-0">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="height: 64px;">
-      <!-- <a class="navbar-brand" href="#">Navbar</a>
+      <!-- <button (click)="toggleSidebar()"><mat-icon>menu</mat-icon></button> -->
+      <button mat-mini-fab color="primary" (click)="toggleSidebar()" aria-label="Example icon button with a menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -157,9 +184,9 @@
                   </div>
                 </li>
               </ul>
-            </div> -->
+            </div>
     </nav>
-    <div class="container my-2">
+    <div class=" my-2 mx-2">
       <router-outlet></router-outlet>
     </div>
   </div>
