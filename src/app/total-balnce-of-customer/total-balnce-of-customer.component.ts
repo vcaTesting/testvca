@@ -18,6 +18,7 @@ export class TotalBalnceOfCustomerComponent implements OnInit {
   showDataTable:boolean = false;
   total:any; 
   customerTotal:any=[];
+  onSelectDate = ''
   constructor(private http:FirebaseService) { }
 
   ngOnInit(): void {
@@ -45,7 +46,9 @@ export class TotalBalnceOfCustomerComponent implements OnInit {
     if(item.name ==  this.filterTerm){
       return item
     }
+    
   })
+  this.selectedDate()
   }
   showallOrder(){
     this.filterTerm = ''
@@ -58,6 +61,7 @@ export class TotalBalnceOfCustomerComponent implements OnInit {
     let totalBalance=0;
     let totalpaid=0;
     for(let item of this.totalBalanceList) {
+      console.log(item)
       totalBalance+=item['Balance14'];
       totalpaid+=item['paid14']
       totalAmount+=item['total14']
@@ -65,6 +69,22 @@ export class TotalBalnceOfCustomerComponent implements OnInit {
     this.balance = totalBalance
     this.total = totalAmount
     this.paid = totalpaid
+    console.log(this.balance,"balance")
+    console.log(this.total,"total")
+    console.log(this.paid,"paid")
   } 
 
+  selectedDate(){
+    console.log("function call")
+    console.log(this.filterTerm);
+    this.showDataTable = true
+    this.totalBalanceList =  this.tempData.filter((item:any)=>{
+      if(item.name ==  this.searchByDate){
+        return item
+      }
+    })
+    this.cal()
+    
+    
+  }
 }

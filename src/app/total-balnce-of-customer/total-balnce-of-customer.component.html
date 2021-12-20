@@ -1,49 +1,52 @@
-<div class="row">
-  <div class="col-md-4 mt-3">
-    <mat-form-field appearance="outline" class="full-width-field">
-      <mat-label>Select Name</mat-label>
-      <mat-select [(ngModel)]="filterTerm" (selectionChange)="search()">
-        <mat-option *ngFor="let name of CustomerName" [value]="name.name">
-          {{name.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="col-md-4 mt-3">
-    <div class="form-group">
-      <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate"  placeholder="Search Wholesaler by Date">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mt-3">
+      <mat-form-field appearance="outline" class="full-width-field">
+        <mat-label>Select Name</mat-label>
+        <mat-select [(ngModel)]="filterTerm" (selectionChange)="search()">
+          <mat-option *ngFor="let name of CustomerName" [value]="name.name">
+            {{name.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4 mt-3">
+      <div class="form-group">
+        <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate">
+      </div>
+    </div>
+    <div class="col-md-4 mt-3">
+      <button class="btn btn-primary py-2" (click)="showallOrder()">Show All Customers Order</button>
+  
     </div>
   </div>
-  <div class="col-md-4 mt-3">
-    <button class="btn btn-primary py-2" (click)="showallOrder()">Show All Customers Order</button>
-
-  </div>
+  
+  <table class="table table-striped" id="sum" *ngIf="showDataTable">
+    <tr>
+      <th><button (click)="cal()" class="btn btn-primary">Total</button>
+      </th>
+    <th></th>
+      <th>{{total}}</th>
+      <th>{{paid}}</th>
+      <th>{{balance}}</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Total</th>
+      <th>Paid</th>
+      <th>Balance</th>
+    </tr>
+    <tr *ngFor="let balance of totalBalanceList | filter:searchByDate | filter:filterTerm ">
+      <td>{{balance.date}}</td>
+      <td>{{balance.name}}</td>
+      <td>{{balance.total14}}</td>
+      <td>{{balance.paid14}}</td>
+      <td>{{balance.Balance14}}</td>
+    </tr>
+  </table>
+  
 </div>
-
-<table class="table table-striped" id="sum" *ngIf="showDataTable">
-  <tr>
-    <th><button (click)="cal()" class="btn btn-primary">Total</button>
-    </th>
-  <th></th>
-    <th>{{total}}</th>
-    <th>{{paid}}</th>
-    <th>{{balance}}</th>
-  </tr>
-  <tr>
-    <th>Date</th>
-    <th>Name</th>
-    <th>Total</th>
-    <th>Paid</th>
-    <th>Balance</th>
-  </tr>
-  <tr *ngFor="let balance of totalBalanceList  let i=index">
-    <td>{{balance.date}}</td>
-    <td>{{balance.name}}</td>
-    <td>{{balance.total14}}</td>
-    <td>{{balance.paid14}}</td>
-    <td>{{balance.Balance14}}</td>
-  </tr>
-</table>
 
 
 

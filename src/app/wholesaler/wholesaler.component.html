@@ -1,23 +1,24 @@
 
-    <div class="row m-3" >
+    <div class="container">
+      <div class="row m-3" >
         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
           <div class="search"> <i class="fa fa-search "></i> <input type="text" class="form-control" [(ngModel)]="search"
             placeholder="Search Wholesaler by Name"> 
            </div>
           </div>
-           <div class="col-3 col-md-2 col-lg-2 col-xl-2 mt-1">
-            <button type="button" class="btn btn-success" (click)="gotoWholsalerPayment()">
+           <div class="col-6 col-md-2 col-lg-2 col-xl-2 mt-1">
+            <button type="button" class="btn btn-outline-primary button" (click)="gotoWholsalerPayment()">
                 <b>+</b> Payment Details
                </button> 
               
         </div>
-        <div class="col-3 col-md-2 col-lg-2 col-xl-2 mt-1">
-            <button type="button" class="btn btn-success" (click)="gotoWholsalerOrder()" >
+        <div class="col-6 col-md-2 col-lg-2 col-xl-2 mt-1">
+            <button type="button" class="btn btn-outline-primary button" (click)="gotoWholsalerOrder()" >
                 <b>+</b> Order Details
                </button> 
         </div>
         <div class="col-3 col-md-2 col-lg-2 col-xl-2 mt-1">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-outline-primary button" data-toggle="modal" data-target="#exampleModal">
                 <b>+</b> Add Wholesaler
                </button> 
         </div>
@@ -81,6 +82,7 @@
                   <th>Name</th>
                   <th>Phone</th>
                   <th>Address</th>
+                  <th>View</th>
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
@@ -90,12 +92,17 @@
                   <td>{{item.name}}</td>
                   <td>{{item.number}}</td>
                   <td>{{item.address}}</td>
-                  <td><button mat-icon-button color="accent" class="btn-tbl-edit"
+                  <td><button data-toggle="modal" data-target="#viewWholesaler" mat-icon-button color="primary" class="btn-tbl-edit" (click)="viewDetails(item)"
+                    >
+                     <mat-icon  aria-label="View" class="col-white">remove_red_eye
+                     </mat-icon>
+                   </button></td>
+                  <td><button data-toggle="modal" data-target="#editWholesaler" mat-icon-button color="primary" (click)="editWholesaler(item)" class="btn-tbl-edit"
                     >
                      <mat-icon aria-label="Edit" class="col-white">edit
                      </mat-icon>
                    </button></td>
-                   <td> <button mat-icon-button color="accent" class="btn-tbl-delete"
+                   <td> <button data-toggle="modal" data-target="#deletWholesaler" mat-icon-button color="warn" class="btn-tbl-delete" (click)="deleteWholsalerDetails(item)"
                     >
                      <mat-icon aria-label="Delete" class="col-white">delete
                      </mat-icon>
@@ -109,6 +116,8 @@
             </div>
             </div>
      
+    </div>
+   
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -163,3 +172,134 @@
 </div>
 
 
+<!-- VIEW WHOLESALER -->
+
+<div class="modal fade" id="viewWholesaler" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Balance</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="container">
+              <h3 mat-dialog-title style="color: red;">Balance</h3>
+              <div mat-dialog-content>
+                <ul class="clearfix">
+                  <li>
+                    <p><span class="font-weight-bold"> Name: {{selectedWholesalerName}}</span></p>
+                  </li>
+                <li>
+                  <p><span class="font-weight-bold"> Mobile Number: {{selectedWholesalerMobile}}</span></p>
+                </li>
+                  <li>
+                    <p><span class="font-weight-bold"> Address: {{selectedWholesalerAddress}}</span></p>
+                  </li>
+                </ul>
+              </div>
+             
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-accent" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- EDIT WHOLESALER -->
+<div class="modal fade" id="editWholesaler" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+                <h2>Edit Wholesaler Detail</h2>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="updateWholesalerDetails">
+                <div class="example-container d-flex justify-content-center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter your Name</mat-label>
+                        <input matInput placeholder="Enter Name" formControlName="name" required>
+                        <mat-icon matSuffix>people</mat-icon>
+                        <mat-error *ngIf="updateWholesalerDetails.get('name').hasError('required')">
+                            Name is required 
+                          </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="example-container d-flex justify-content-center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter your Mobile</mat-label>
+                        <input matInput placeholder="Enter Mobile" formControlName="number" required>
+                        <mat-icon matSuffix>phone</mat-icon>
+                        <mat-error *ngIf="updateWholesalerDetails.get('number').hasError('required')">
+                            Number is required 
+                          </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="example-container d-flex justify-content-center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter your Address</mat-label>
+                        <input matInput placeholder="Enter Mobile" formControlName="address" required>
+                        <mat-icon matSuffix>home</mat-icon>
+                        <mat-error *ngIf="updateWholesalerDetails.get('address').hasError('required')">
+                            Address is required 
+                          </mat-error>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- DELETE WHOLESALER -->
+
+<div class="modal fade" id="deletWholesaler" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Balance</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+          <div class="container">
+              <h3 mat-dialog-title style="color: red;">Are You Sure ?</h3>
+              <div mat-dialog-content>
+                <ul class="clearfix">
+                  <li>
+                    <p><span class="font-weight-bold"> Name: </span>{{wholesaler?.name}}</p>
+                  </li>
+                  <li>
+                      <p><span class="font-weight-bold"> Address: </span>{{ wholesaler?.number }}</p>
+                    </li>
+                  <li>
+                    <p><span class="font-weight-bold"> Address: </span>{{ wholesaler?.address }}</p>
+                  </li>
+                </ul>
+                <div class="row d-flex justify-content-center">
+                  <button type="button" (click)="deleteWholsaler(wholesaler)" class="btn btn-danger m-2" data-dismiss="modal">Delete</button>
+                  <button type="button" class="btn btn-accent" data-dismiss="modal">Close</button>
+                
+                </div>
+              </div>
+             
+            </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -140,11 +140,11 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="invoice-footer mt25">
-                                        <p class="text-center">Generated on Monday, October 08th, 2015 <a href="#"
-                                                class="btn btn-default ml15"><i class="fa fa-print mr5"></i> Print</a>
+                                    <div class="invoice-footer">
+                                        <p class="text-center">Generated on Monday, October 08th, 2015
+                                            <button mat-raised-button color="primary" class="m-3" (click)="submitCustomerPayment()"><mat-icon>print</mat-icon> Print</button>
                                         </p>
-                                        <button (click)="submitCustomerPayment()">submit</button>
+                                        <!-- <button (click)="submitCustomerPayment()">submit</button> -->
                                     </div>
                                 </div>
                                 <!-- col-lg-12 end here -->
@@ -264,9 +264,10 @@
                                 </div>
                             </div>
                             <div class="invoice-footer mt25">
-                                <p class="text-center">Generated on Monday, October 08th, 2015 <a href="#"
-                                        class="btn btn-default ml15"><i class="fa fa-print mr5"></i> Print</a></p>
-                                <button (click)="submitwholsalerPayment()">submit</button>
+                                <p class="text-center">Generated on Monday, October 08th, 2015 
+                                    <button mat-raised-button color="primary" class="m-3" (click)="submitwholsalerPayment()">
+                                        <mat-icon>print</mat-icon> Print</button>
+                                </p>
                             </div>
                         </div>
                         <!-- col-lg-12 end here -->

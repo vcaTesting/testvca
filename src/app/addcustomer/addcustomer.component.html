@@ -1,4 +1,4 @@
- <div>
+ <div class="container">
  <div class="row m-3">
     <div class="col-12 col-md-6 col-lg-6 col-xl-6">
       <div class="search"> <i class="fa fa-search "></i> <input type="text" class="form-control" [(ngModel)]="search"
@@ -6,17 +6,17 @@
          </div>
     
     </div>
-    <div class="col-3 col-md-2 col-lg-2 col-xl-2 mt-1">
+    <div class="col-6 col-md-2 col-lg-2 col-xl-2 mt-1">
       <button type="button" class="btn btn-outline-primary button" (click)="gotoCustomerPayment()">
         <b>+</b> Payment Details
       </button>
     </div>
-    <div class="col-3 col-md-2 col-lg-2 col-xl-2 mt-1">
+    <div class="col-6 col-md-2 col-lg-2 col-xl-2 mt-1">
       <button type="button" class="btn btn-outline-primary button" (click)="gotoCustomerOrder()">
         <b>+</b> Order Details
       </button>
     </div>
-    <div class="col-3 col-md-2 col-lg-2 col-xl-2 mt-1">
+    <div class="col-6 col-md-2 col-lg-2 col-xl-2 mt-1">
       <button type="button" class="btn btn-outline-primary button" data-toggle="modal" data-target="#exampleModal">
         <b>+</b> Add Customer
       </button>
@@ -83,6 +83,7 @@
                       <th>Name</th>                     
                       <th>phone</th>
                       <th>Address</th>
+                      <th>View</th>
                       <th>Edit</th>
                       <th>Delete</th>
                   </tr>
@@ -92,12 +93,17 @@
                     <td>{{item.name}}</td>
                     <td>{{item.phone}}</td>
                     <td>{{item.address}}</td>
-                    <td><button mat-icon-button color="accent" class="btn-tbl-edit"
+                    <td><button data-toggle="modal" data-target="#viewCustomer" mat-icon-button color="primary" class="btn-tbl-edit"
+                      >
+                       <mat-icon aria-label="View" class="col-white" (click)="viewCustomerDetails(item)">remove_red_eye
+                       </mat-icon>
+                     </button></td>
+                    <td><button data-toggle="modal" data-target="#editCustomer"  (click)="editCustomer(item)" mat-icon-button color="primary" class="btn-tbl-edit"
                      >
                       <mat-icon aria-label="Edit" class="col-white">edit
                       </mat-icon>
                     </button></td>
-                    <td> <button mat-icon-button color="accent"  class="btn-tbl-delete"
+                    <td> <button mat-icon-button color="warn"  class="btn-tbl-delete"
                       (click)="delete(item)" >
                       <mat-icon aria-label="Delete" class="col-white">delete
                       </mat-icon>
@@ -230,4 +236,95 @@
   </div>
 
 
+
+  <!-- VIEW MODAL  -->
+  <div class="modal fade" id="viewCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Balance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <h3 mat-dialog-title style="color: red;">Balance</h3>
+                <div mat-dialog-content>
+                  <ul class="clearfix">
+                    <li>
+                      <p><span class="font-weight-bold"> Name: {{selectedCustomerBalnce}}</span></p>
+                    </li>
+                  <li>
+                    <p><span class="font-weight-bold"> Mobile Number: {{selectedCustomerMobile}}</span></p>
+                  </li>
+                    <li>
+                      <p><span class="font-weight-bold"> Address: {{selectedCustomerAddress}}</span></p>
+                    </li>
+                  </ul>
+                </div>
+               
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-accent" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT MODEL -->
+  <div class="modal fade" id="editCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <h2>Edit Customer Detail</h2>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateCustomerDetails">
+                    <div class="example-container d-flex justify-content-center">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Enter your Name</mat-label>
+                            <input matInput placeholder="Enter Name" formControlName="name" required>
+                            <mat-icon matSuffix>people</mat-icon>
+                            <mat-error *ngIf="updateCustomerDetails.get('name').hasError('required')">
+                                Name is required 
+                              </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="example-container d-flex justify-content-center">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Enter your Mobile</mat-label>
+                            <input matInput placeholder="Enter Mobile" formControlName="number" required>
+                            <mat-icon matSuffix>phone</mat-icon>
+                            <mat-error *ngIf="updateCustomerDetails.get('number').hasError('required')">
+                                Number is required 
+                              </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="example-container d-flex justify-content-center">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Enter your Address</mat-label>
+                            <input matInput placeholder="Enter Mobile" formControlName="address" required>
+                            <mat-icon matSuffix>home</mat-icon>
+                            <mat-error *ngIf="updateCustomerDetails.get('address').hasError('required')">
+                                Address is required 
+                              </mat-error>
+                        </mat-form-field>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 

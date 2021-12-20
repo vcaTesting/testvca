@@ -25,6 +25,11 @@ export class AddcustomerComponent implements OnInit {
   paid:any;
   total:any;
  color:any;
+ public updateCustomerDetails:any
+  selectedCustomerBalnce: any;
+  selectedCustomerMobile: any;
+  selectedCustomerAddress: any;
+  custBalance: any;
 
 
   constructor(private httpSearce: FirebaseService,
@@ -41,6 +46,11 @@ export class AddcustomerComponent implements OnInit {
       name: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       phone: new FormControl('',[Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")])
+    })
+    this.updateCustomerDetails = new FormGroup({
+      name: new FormControl (''),
+      number: new FormControl (''),
+      address: new FormControl ('')
     })
   }
   submit() {
@@ -130,6 +140,7 @@ export class AddcustomerComponent implements OnInit {
     this.paid = totalpaid
     this.total= total
     }
+    this.balance = totalBalance
   }
   customerTotal(name:any){
     this.totalBalanceList = this.tempArray.filter((item:any)=>{
@@ -139,4 +150,22 @@ export class AddcustomerComponent implements OnInit {
       })
       this.cal()
   } 
+  editCustomer(item:any){
+    this.updateCustomerDetails.get('name').setValue(item.name)
+    this.updateCustomerDetails.get('address').setValue(item.address)
+    this.updateCustomerDetails.get('number').setValue(item.phone)
+  }
+
+  viewCustomerDetails(item:any){
+    console.log(item)
+    this.selectedCustomerBalnce =  item.name
+    this.selectedCustomerMobile = item.phone
+    this.selectedCustomerAddress = item.address
+    this.custBalance = this.balance
+    this.totalBalanceList = this.tempArray.filter((item: any) => {
+      if (item.name == this.selectedCustomerBalnce) {
+        return item
+      }
+    })
+  }
 }

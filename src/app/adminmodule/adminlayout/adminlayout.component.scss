@@ -67,3 +67,65 @@
 //     color:#fcfcfc;
 //     text-decoration: none;
 //   }
+
+
+// Navbar
+
+p {
+    cursor: pointer;
+    margin: 16px;
+    font-size: 25px;
+    color: #94bbe9;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 1s ease-in-out;
+    position: relative;
+  
+    &::before {
+      content: attr(data-item);
+      transition: all 1s ease-in-out;
+      color: #0398b3;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 0;
+      overflow: hidden;
+    }
+  
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+
+  .navbar{
+    background: rgb(4,21,50);
+    background: linear-gradient(90deg, rgba(4,21,50,1) 17%, rgba(10,63,153,1) 70%, rgb(17, 116, 161) 100%);
+  }
+  
+  .sidebar{
+    height:100vh; 
+    position: fixed;
+    width: 235px;
+    background: rgb(4,21,50);
+    background: linear-gradient(90deg, rgba(4,21,50,1) 17%, rgb(4,21,50) 70%, rgb(4,21,50) 100%);
+ 
+  }
+  
+  .route {
+    background: linear-gradient(90deg, rgb(1, 126, 105) 17%, rgb(3, 152, 179) 70%);
+    border-radius: 6px;
+    }
+    .nav-item a{
+      color: white;
+    }
+    .nav-item a:hover {
+      color: #94bbe9;
+  }
+
+
+
+  
