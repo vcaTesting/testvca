@@ -24,6 +24,7 @@ export class TotalBalnceOfCustomerComponent implements OnInit {
     this. getCustomeTotalBalance()
     this.getCustomerName()
   }
+  
   getCustomeTotalBalance() {
     this.http.showCustomerOrder().subscribe(
       (res) => {
@@ -32,6 +33,7 @@ export class TotalBalnceOfCustomerComponent implements OnInit {
       }
     )
   }
+
   getCustomerName(){
     this.http.getCustomer().subscribe(
       (res)=>{
@@ -39,6 +41,7 @@ export class TotalBalnceOfCustomerComponent implements OnInit {
       }
     )
   }
+
   search(){
   this.showDataTable = true
   this.totalBalanceList =  this.tempData.filter((item:any)=>{
@@ -46,13 +49,16 @@ export class TotalBalnceOfCustomerComponent implements OnInit {
       return item
     }
   })
+
+  this.cal()
   }
+
   showallOrder(){
     this.filterTerm = ''
     this.searchByDate = '';
     this.showDataTable = true
-
   }
+
   cal(){
     let totalAmount=0;
     let totalBalance=0;
@@ -67,4 +73,16 @@ export class TotalBalnceOfCustomerComponent implements OnInit {
     this.paid = totalpaid
   } 
 
+  submit(date:any){
+    console.log(date,"hb");
+    this.totalBalanceList =  this.tempData.filter((item:any)=>{
+      if(item.date ==  date){
+        console.log(item,"item")
+        console.log(date,"date")
+        console.log(item.date,"idate")
+        return item     
+      }
+    })
+  this.cal()
+  }
 }

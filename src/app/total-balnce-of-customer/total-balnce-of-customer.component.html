@@ -11,7 +11,7 @@
   </div>
   <div class="col-md-4 mt-3">
     <div class="form-group">
-      <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate"  placeholder="Search Wholesaler by Date">
+      <input  type="date" class="form-control" style="height: 54px; width: 204px;" [(ngModel)]="searchByDate" #datePicker (blur)="submit(datePicker.value)">{{searchByDate}}
     </div>
   </div>
   <div class="col-md-4 mt-3">
@@ -36,7 +36,7 @@
     <th>Paid</th>
     <th>Balance</th>
   </tr>
-  <tr *ngFor="let balance of totalBalanceList  let i=index">
+  <tr *ngFor="let balance of totalBalanceList |filter:searchByDate |filter:filterTerm">
     <td>{{balance.date}}</td>
     <td>{{balance.name}}</td>
     <td>{{balance.total14}}</td>

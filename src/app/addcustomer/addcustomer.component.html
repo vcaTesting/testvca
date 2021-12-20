@@ -1,10 +1,10 @@
- <div>
- <div class="row m-3">
+<div>
+  <div class="row m-3">
     <div class="col-12 col-md-6 col-lg-6 col-xl-6">
       <div class="search"> <i class="fa fa-search "></i> <input type="text" class="form-control" [(ngModel)]="search"
-          placeholder="Search Customer by Name"> 
-         </div>
-    
+          placeholder="Search Customer by Name">
+      </div>
+
     </div>
     <div class="col-3 col-md-2 col-lg-2 col-xl-2 mt-1">
       <button type="button" class="btn btn-outline-primary button" (click)="gotoCustomerPayment()">
@@ -32,42 +32,42 @@
             <i class="material-icons-two-tone pr-3">grid_on</i>
             Grid View
           </ng-template>
-         
-          <div class="row tbody ml-3 mt-3" >
+
+          <div class="row tbody ml-3 mt-3">
             <div class="col-lg-4 col-sm-12" *ngFor="let customer of data  | filter:search let i= index">
               <div class="m-b-20">
                 <div class="card border-apply" (click)="customerTotal(customer.name)">
-                <div class="contact-grid" >
-                  <div class="profile-header l-bg-purple-dark">
-                    <div class="user-name">{{customer.name}}</div>
-                    <div class="name-center"></div>
-                  </div>
-                  <img src="../../assets/prof3.jpg" class="user-img" alt="">
-                  <p>
-                    {{customer.address}}
-                    <br />Pune
-                  </p>
-                  <div>
-                    <span class="phone">
-                      <i class="material-icons">phone</i>{{customer.phone}}</span>
-                  </div>
-                  <div class="profile-userbuttons">
-                    <button class="btn btn-primary">Edit</button>
-                  </div>
-                  <div class="d-flex justify-content-between align-items-center m-2 px-4">
-                    <div class="stats">
-                      <h5 class="mb-0">Total</h5> <span>{{total}}</span>
+                  <div class="contact-grid">
+                    <div class="profile-header l-bg-purple-dark">
+                      <div class="user-name">{{customer.name}}</div>
+                      <div class="name-center"></div>
                     </div>
-                    <div class="stats">
-                      <h5 class="mb-0">Paid</h5> <span>{{paid}}</span>
+                    <img src="../../assets/prof3.jpg" class="user-img" alt="">
+                    <p>
+                      {{customer.address}}
+                      <br />Pune
+                    </p>
+                    <div>
+                      <span class="phone">
+                        <i class="material-icons">phone</i>{{customer.phone}}</span>
                     </div>
-                    <div class="stats">
-                      <h5 class="mb-0">Balance</h5> <span>{{balance}}</span>
+                    <div class="profile-userbuttons">
+                      <button class="btn btn-primary">Edit</button>
                     </div>
-                </div>
+                    <div class="d-flex justify-content-between align-items-center m-2 px-4">
+                      <div class="stats">
+                        <h5 class="mb-0">Total</h5> <span>{{total}}</span>
+                      </div>
+                      <div class="stats">
+                        <h5 class="mb-0">Paid</h5> <span>{{paid}}</span>
+                      </div>
+                      <div class="stats">
+                        <h5 class="mb-0">Balance</h5> <span>{{balance}}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
           </div>
         </mat-tab>
@@ -75,97 +75,95 @@
           <ng-template mat-tab-label>
             <i class="material-icons-two-tone pr-3">list_alt</i>
             List View
-          </ng-template>  
+          </ng-template>
           <div class="row mt-12 ml-0 mr-0">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
               <thead>
-                  <tr>
-                      <th>Name</th>                     
-                      <th>phone</th>
-                      <th>Address</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
-                  </tr>
+                <tr>
+                  <th>Name</th>
+                  <th>phone</th>
+                  <th>Address</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let item of data | filter: search">
-                    <td>{{item.name}}</td>
-                    <td>{{item.phone}}</td>
-                    <td>{{item.address}}</td>
-                    <td><button mat-icon-button color="accent" class="btn-tbl-edit"
-                     >
+                <tr *ngFor="let item of data | filter: search">
+                  <td>{{item.name}}</td>
+                  <td>{{item.phone}}</td>
+                  <td>{{item.address}}</td>
+                  <td><button mat-icon-button color="accent" class="btn-tbl-edit">
                       <mat-icon aria-label="Edit" class="col-white">edit
                       </mat-icon>
                     </button></td>
-                    <td> <button mat-icon-button color="accent"  class="btn-tbl-delete"
-                      (click)="delete(item)" >
+                  <td> <button mat-icon-button color="accent" class="btn-tbl-delete" (click)="delete(item)">
                       <mat-icon aria-label="Delete" class="col-white">delete
                       </mat-icon>
                     </button></td>
-                    </tr>
-                    </tbody>
-   
-                    </table>
-                 
-          </div>      
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label>
             <i class="material-icons">expand_more</i>
-                        Expansion View
-            </ng-template>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
-              <div class="card">
-                <div class="header">
-                  <h2>
-                    <small>Click On Name to Find Detail</small>
-                  </h2>
-                </div>
-                <div class="body">
-                  <div class="row clearfix">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                      <mat-accordion *ngFor="let item of data | filter:search">
-                        <mat-expansion-panel>
-                          <mat-expansion-panel-header >
-                            <mat-panel-title >
-                              {{item.name}}
-                            </mat-panel-title>
-                          </mat-expansion-panel-header>
-                          <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
-                              <div class="panel-body">
-                                <ul>
-                                  <li>{{item.name}}</li>
-                                  <li>{{item.phone}}</li>
-                                  <li>{{item.address}}</li>
-                                </ul>
-                              </div>
-                              <div class="mt-2">
-                                <button mat-icon-button aria-label="Example icon-button with a heart icon"
-                                  class="btn btn-circle bg-green mr-5">
-                                  <mat-icon>thumb_up</mat-icon>
-                                  Total
-                                </button>
-                                <button mat-icon-button aria-label="Example icon-button with a heart icon"
+            Expansion View
+          </ng-template>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
+            <div class="card">
+              <div class="header">
+                <h2>
+                  <small>Click On Name to Find Detail</small>
+                </h2>
+              </div>
+              <div class="body">
+                <div class="row clearfix">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <mat-accordion *ngFor="let item of data | filter:search">
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            {{item.name}}
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                            <div class="panel-body">
+                              <ul>
+                                <li>{{item.name}}</li>
+                                <li>{{item.phone}}</li>
+                                <li>{{item.address}}</li>
+                              </ul>
+                            </div>
+                            <div class="mt-2">
+                              <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                                class="btn btn-circle bg-green mr-5">
+                                <mat-icon>thumb_up</mat-icon>
+                                Total
+                              </button>
+                              <button mat-icon-button aria-label="Example icon-button with a heart icon"
                                 class="btn btn-circle bg-red  mr-5">
                                 <mat-icon>thumb_down</mat-icon>
                                 Paid
                               </button>
-                                <button mat-icon-button aria-label="Example icon-button with a heart icon"
-                                  class="btn btn-circle bg-red  mr-5">
-                                  <mat-icon>thumb_down</mat-icon>
-                                  Balance
-                                </button>
-                              </div>
+                              <button mat-icon-button aria-label="Example icon-button with a heart icon"
+                                class="btn btn-circle bg-red  mr-5">
+                                <mat-icon>thumb_down</mat-icon>
+                                Balance
+                              </button>
                             </div>
                           </div>
-                        </mat-expansion-panel>
-                        </mat-accordion>
                         </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </mat-tab>
       </mat-tab-group>
     </div>
@@ -173,61 +171,58 @@
 
 </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title justify-content-center">
-            <h3 style="color: blue;">Add Customer</h3>
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="addcustomer">
-            <div class="example-container d-flex justify-content-center">
-              <mat-form-field appearance="outline">
-                <mat-label>Enter your Name</mat-label>
-                <input matInput placeholder="Enter Name" formControlName="name" required>
-                <mat-icon matSuffix>people</mat-icon>
-                <mat-error *ngIf="addcustomer.get('name').hasError('required')">
-                  Name is required
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="example-container d-flex justify-content-center">
-              <mat-form-field appearance="outline">
-                <mat-label>Enter your Mobile</mat-label>
-                <mat-icon matSuffix>phone</mat-icon>
-                <input matInput placeholder="Enter Mobile" formControlName="phone" required
-                  pattern="^((\\+91-?)|0)?[0-9]{10}$">
-                <mat-icon matSuffix *ngIf="!addcustomer.get('phone')?.errors" color="success">check_circle</mat-icon>
-                <mat-error *ngIf="addcustomer.get('phone').hasError('pattern')">
-                  Number Invalid
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="example-container d-flex justify-content-center">
-              <mat-form-field appearance="outline">
-                <mat-label>Enter your Address</mat-label>
-                <input matInput placeholder="Enter Mobile" formControlName="address" required>
-                <mat-icon matSuffix>home</mat-icon>
-                <mat-error *ngIf="addcustomer.get('address').hasError('required')">
-                  Address is required
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="submit()">Save changes</button>
-        </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title justify-content-center">
+          <h3 style="color: blue;">Add Customer</h3>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addcustomer">
+          <div class="example-container d-flex justify-content-center">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your Name</mat-label>
+              <input matInput placeholder="Enter Name" formControlName="name" required>
+              <mat-icon matSuffix>people</mat-icon>
+              <mat-error *ngIf="addcustomer.get('name').hasError('required')">
+                Name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="example-container d-flex justify-content-center">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your Mobile</mat-label>
+              <mat-icon matSuffix>phone</mat-icon>
+              <input matInput placeholder="Enter Mobile" formControlName="phone" required
+                pattern="^((\\+91-?)|0)?[0-9]{10}$">
+              <mat-icon matSuffix *ngIf="!addcustomer.get('phone')?.errors" color="success">check_circle</mat-icon>
+              <mat-error *ngIf="addcustomer.get('phone').hasError('pattern')">
+                Number Invalid
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="example-container d-flex justify-content-center">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your Address</mat-label>
+              <input matInput placeholder="Enter Mobile" formControlName="address" required>
+              <mat-icon matSuffix>home</mat-icon>
+              <mat-error *ngIf="addcustomer.get('address').hasError('required')">
+                Address is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="submit()">Save changes</button>
       </div>
     </div>
   </div>
-
-
-
+</div>

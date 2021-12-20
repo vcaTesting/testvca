@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { DeleteDialogComponentComponent } from '../delete-dialog-component/delete-dialog-component.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CommonServiceService } from '../common-service.service';
 @Component({
   selector: 'app-addcustomer',
   templateUrl: './addcustomer.component.html',
@@ -26,13 +27,11 @@ export class AddcustomerComponent implements OnInit {
   total:any;
  color:any;
 
-
   constructor(private httpSearce: FirebaseService,
     private router: Router,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar,
-
-  ) { }
+    private commonService:CommonServiceService
+    ) { }
 
   ngOnInit(): void {
     this.showcustomers();
@@ -43,20 +42,22 @@ export class AddcustomerComponent implements OnInit {
       phone: new FormControl('',[Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")])
     })
   }
+
   submit() {
     if(this.addcustomer.valid) {
       this.httpSearce.addCustomer(this.addcustomer.value).then(
         (res) => {
           console.log(res);
-          this.showCustomPosition()
-        },
+            this.commonService.showSuccessToast("your Data successfully Uploaded")
+          },
         (err) => {
-          console.log(err);
+          this.commonService.showSuccessToast("your Data Not Uploaded please try again")
         }
       )
-      this.addcustomer.reset();
+           this.addcustomer.reset();
     }
     else{
+      this.commonService.showFailureToast("please enter Name")
     }
   }
 
@@ -65,6 +66,7 @@ export class AddcustomerComponent implements OnInit {
       this.data = res;
     })
   }
+
   gotoCustomerPayment() {
     this.router.navigate(['/paymentpagecustomer'])
   }
@@ -72,51 +74,37 @@ export class AddcustomerComponent implements OnInit {
   gotoCustomerOrder() {
     this.router.navigate(['/orderpagecustomer'])
   }
+
   getCustomeTotalBalance() {
     this.httpSearce.showCustomerOrder().subscribe(
       (res) => {
         this.totalBalanceList = res;
+        console.log(this.totalBalanceList)
         this.tempArray = res
-      }
-    )
-  
+      })
   }
  
-  showCustomPosition() {
-    
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: false,
-      timer: 1500
-    });
-  }
-  delete(item:any){
+ delete(item:any){
     const dialogRef = this.dialog.open(DeleteDialogComponentComponent, {
       data: item,
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
         this.showcustomers();
-        this.showNotification(
-          'black',
-          'Edit Record Successfully...!!!',
-          'bottom',
-          'center'
-        );
       }
     });
   }
-  
-  showNotification(colorName:any,text:any, placementFrom:any, placementAlign:any) {
-    this.snackBar.open(text, '', {
-      duration: 2000,
-      verticalPosition: placementFrom,
-      horizontalPosition: placementAlign,
-      panelClass: colorName,
-    });
-  }
+
+
+
+  customerTotal(name:any){
+    this.totalBalanceList = this.tempArray.filter((item:any)=>{
+      if(item.name == name){
+        return item
+      }
+      })
+      this.cal()
+  } 
 
   cal() {
     let totalBalance = 0;
@@ -131,12 +119,4 @@ export class AddcustomerComponent implements OnInit {
     this.total= total
     }
   }
-  customerTotal(name:any){
-    this.totalBalanceList = this.tempArray.filter((item:any)=>{
-      if(item.name == name){
-        return item
-      }
-      })
-      this.cal()
-  } 
 }

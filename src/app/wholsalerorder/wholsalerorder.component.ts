@@ -23,6 +23,7 @@ export class WholsalerorderComponent implements OnInit {
     paid: 0,
     balance: 0
   }
+  currenDate:any
   image: any
   selectedwholsaler:any;
   orderDate:any
@@ -49,9 +50,12 @@ export class WholsalerorderComponent implements OnInit {
     this.WholsalerName()
     this.getWholsalerBalance
     this.cal()
+    this.currenDate = new Date()
   }
   submit() {
     if (this.wholsalerform.valid) {
+      console.log(this.wholsalerform.value)
+
       this.http.setWholesaler(this.wholsalerform.value).then(
         (res) => {
           console.log(res)
@@ -61,6 +65,7 @@ export class WholsalerorderComponent implements OnInit {
       this.wholsalerform.reset()
     } else {
       alert("Please Select Date")
+      console.log(this.wholsalerform.value)
     }
   }
 
@@ -78,6 +83,7 @@ export class WholsalerorderComponent implements OnInit {
   }
   selectedWholsaler(data:any){
     this.selectedwholsaler = data.value
+    this.wholsalerform.get('name').setValue(this.selectedwholsaler.name)
     console.log(this.selectedwholsaler)
     this.cal()
   }
@@ -99,5 +105,9 @@ export class WholsalerorderComponent implements OnInit {
   }
     this.totalAmount = totalBalance
     console.log(this.totalAmount)
+}
+selectedProduct(data:any){
+let product = data.value
+this.wholsalerform.get('pname').setValue(product.name)
 }
 }

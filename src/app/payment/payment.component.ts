@@ -4,6 +4,7 @@ import { FirebaseService } from '../firebase.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { DatePipe } from '@angular/common';
+import { CommonServiceService } from '../common-service.service';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -38,7 +39,7 @@ export class PaymentComponent implements OnInit {
   todayDate:any
   constructor(private http: FirebaseService,
     private datePipe:DatePipe,
-    private fb: FormBuilder,
+    private commonService:CommonServiceService
    
     ) { }
 
@@ -48,8 +49,8 @@ export class PaymentComponent implements OnInit {
     this.getWholsalerBalance()
     this.cal()
     this.customerpaymentform = new FormGroup({
-      date: new FormControl(''),
-      name: new FormControl(''),
+      date: new FormControl('',Validators.required),
+      name: new FormControl('', Validators.required),
       cash: new FormControl(''),
       cheque: new FormControl(''),
       Chequeno: new FormControl(''),
@@ -72,28 +73,29 @@ export class PaymentComponent implements OnInit {
       })
   }
   submitCustomerPayment() {
-
-        this.DATA = document.getElementById('htmlData');
-         
-        html2canvas(this.DATA).then(canvas => {
-            
-            let fileWidth = 108;
-            let fileHeight = canvas.height * fileWidth / canvas.width;
-            
-            const FILEURI = canvas.toDataURL('image/png')
-            let PDF = new jsPDF('p', 'mm',[ 130, 155]);
-  
-            let position = 0;
-            PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
-            
-            PDF.save('angular-demo.pdf');
-           });     
+    if(this.customerpaymentform.valid){
+      this.DATA = document.getElementById('htmlData');       
+      html2canvas(this.DATA).then(canvas => {          
+          let fileWidth = 108;
+          let fileHeight = canvas.height * fileWidth / canvas.width;
           
-      this.http.saveCustomerPay(this.customerpaymentform.value).then(
-        (res)=> {
-          alert("your data upload successful")
-        }
-      )
+          const FILEURI = canvas.toDataURL('image/png')
+          let PDF = new jsPDF('p', 'mm',[ 130, 155]);
+
+          let position = 0;
+          PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+          
+          PDF.save('angular-demo.pdf');
+         });     
+        
+    this.http.saveCustomerPay(this.customerpaymentform.value).then(
+      (res)=> {
+        this.commonService.showSuccessToast("Your Data successfully saved")
+      })
+    }else{
+      this.commonService.showFailureToast("Please enter All required Feilds")
+    }
+    
   }
  
   submitwholsalerPayment(){

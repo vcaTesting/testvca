@@ -24,7 +24,6 @@ getWholsalerOrderDetail(){
      (res)=>{
        this.orderOfwholsaler =res
        console.log(this.orderOfwholsaler);
-
      }
    )
    console.log(this.orderOfwholsaler.value);

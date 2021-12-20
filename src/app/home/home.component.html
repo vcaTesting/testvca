@@ -24,11 +24,7 @@
                             </h2>
                         </div>
                         <div class="col-6 text-right">
-                            <!-- <span><button mat-icon-button (click)="cal()">
-                                <mat-icon >remove_red_eye</mat-icon><p>0</p><i class="fa fa-arrow-up"></i>
-                            </button>
-                        </span> -->
-                            <span><mat-icon (click)="cal()">remove_red_eye</mat-icon><p>{{balance}}</p><i class="fa fa-arrow-up"></i></span>
+                            {{todayBalance}}
                         </div>
                     </div>
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
@@ -62,7 +58,7 @@
                             </h2>
                         </div>
                         <div class="col-6 text-right">
-                            <span><mat-icon (click)="total()">remove_red_eye</mat-icon><br><p>{{wholsalerBalance}}</p> <i class="fa fa-arrow-up"></i></span>
+                           {{totalpending}}
                         </div>
                     </div>
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
@@ -86,7 +82,7 @@
                             </h2>
                         </div>
                         <div class="col-6 text-right">
-                            <span>{{collection}} <i class="fa fa-arrow-up"></i></span>
+                            <span>{{collection}}<i class="fa fa-arrow-up"></i></span>
                         </div>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
@@ -96,7 +92,9 @@
                             </h2>
                         </div>
                         <div class="col-6 text-right">
-                                <span><mat-icon >remove_red_eye</mat-icon><p>{{todaysDate}}</p><i class="fa fa-arrow-up"></i></span>
+                                <span>
+                            {{todaybal}}
+                                </span>
                         </div>
                     </div>
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
@@ -116,19 +114,18 @@
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-6">
                             <h2 class="d-flex align-items-center mb-0">
-                                Todays Total </h2>
+                                Todays LiveBird </h2>
                         </div>
                         <div class="col-6 text-right">
-                            <span>100 <i class="fa fa-arrow-up"></i></span>
+                            <span>{{totalliveBird}} <i class="fa fa-arrow-up"></i></span>
                         </div>
                         <div class="col-6">
                             <h2 class="d-flex align-items-center mb-0">
-                                Balance </h2>
+                                Amount </h2>
                         </div>
                             <div class="col-6 text-right">
-                                <span><button mat-icon-button>
-                                    <mat-icon >remove_red_eye</mat-icon><p>0</p><i class="fa fa-arrow-up"></i>
-                                </button>
+                                <span>
+                                    {{Amount}}
                             </span>
                             </div>
                     </div>
@@ -228,7 +225,6 @@
                                     </div>
                                 </td>
                                 <td>{{wholsaler.address}}</td>
-                                <!-- <td><button (click)="wholsalerTotal(wholsaler.name)">view</button>{{wholsalerBalance}}</td> -->
                                 <td><button mat-icon-button>
                                     <mat-icon  data-toggle="modal" data-target="#WholsalerbalanceModal" (click)="wholsalerTotal(wholsaler.name)">remove_red_eye</mat-icon>
                                 </button>
@@ -364,12 +360,6 @@
   <div class="modal fade" id="balanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{selectedCustomerBalnce}} Balance</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="modal-body">
             <div class="container">
                 <h3 mat-dialog-title style="color: red;">Balance</h3>
@@ -380,15 +370,13 @@
                     </li>
                     <li>
                       <p><span class="font-weight-bold"> Balance: </span>{{ balance }}</p>
-                    </li>
-                   
+                    </li>            
                   </ul>
                 </div>
-               
+                <div class="d-flex justify-content-end"> 
+                    <button type="button" class="btn btn-accent" data-dismiss="modal">Close</button>
+                </div>
               </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-accent" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -398,12 +386,6 @@
   <div class="modal fade" id="WholsalerbalanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{selectedCustomerBalnce}} Balance</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="modal-body">
             <div class="container">
                 <h3 mat-dialog-title style="color: red;">Balance</h3>
@@ -417,12 +399,11 @@
                     </li>
                    
                   </ul>
-                </div>
-               
+                </div>       
               </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-accent" data-dismiss="modal">Close</button>
+              <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-accent" data-dismiss="modal">Close</button>
+              </div>
         </div>
       </div>
     </div>
@@ -434,15 +415,9 @@
   <div class="modal fade" id="deleteWholsaler" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"> Balance</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="modal-body">
             <div class="container">
-                <h3 mat-dialog-title style="color: red;">Balance</h3>
+                <h3 mat-dialog-title>Are you sure?</h3>
                 <div mat-dialog-content>
                   <ul class="clearfix">
                     <li>

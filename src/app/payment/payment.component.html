@@ -141,10 +141,13 @@
                                         </div>
                                     </div>
                                     <div class="invoice-footer mt25">
-                                        <p class="text-center">Generated on Monday, October 08th, 2015 <a href="#"
-                                                class="btn btn-default ml15"><i class="fa fa-print mr5"></i> Print</a>
+                                        <p class="text-center">Generated on {{currentDate}} <a href="#"
+                                                class="btn btn-default ml15"></a>
                                         </p>
-                                        <button (click)="submitCustomerPayment()">submit</button>
+                                        <div class="d-flex justify-content-center">
+                                            <button class="btn btn primary" (click)="submitCustomerPayment()">submit</button>
+                                        </div>
+                                       
                                     </div>
                                 </div>
                                 <!-- col-lg-12 end here -->
