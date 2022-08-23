@@ -27,6 +27,7 @@ export class AddcustomerComponent implements OnInit {
       phone: new FormControl('', [Validators.required, Validators.maxLength(10)])
     })
   }
+  
   submit() {
     this._add.addCustomer(this.addcustomer.value).then(
       (res) => {
