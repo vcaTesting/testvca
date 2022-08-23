@@ -14,6 +14,7 @@ export class OrderdetailComponent implements OnInit {
   searchByDate: any;
   showDatatable:boolean = false
   DATA:any;
+  val = '
   constructor(private http: FirebaseService) { }
 
   ngOnInit(): void {
