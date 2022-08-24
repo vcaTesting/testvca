@@ -9,6 +9,7 @@ import { FirebaseService } from '../firebase.service';
 export class ProftLossComponent implements OnInit {
   data:any=[];
   wholsalerList:any=[]
+  unused=''
   constructor(private http:FirebaseService) {
    }
  
