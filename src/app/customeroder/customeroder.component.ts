@@ -10,7 +10,7 @@ import html2canvas from 'html2canvas';
 })
 export class CustomeroderComponent implements OnInit {
   @ViewChild('htmlData') htmlData:ElementRef | undefined;
-
+  unused;
   CustomerList:any=[];
   savedata:any=[];
   orderForm:any;
