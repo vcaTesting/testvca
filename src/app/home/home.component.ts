@@ -14,6 +14,7 @@ import { CommonServiceService } from '../common-service.service';
 })
 export class HomeComponent implements OnInit {
   data: any = [];
+  unuser;
   wholsalerList: any = [];
   wholsalername: any;
   balance: any;
